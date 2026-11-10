@@ -1,4 +1,52 @@
-# Hyderabad Nearby Services WebGIS (fresh start)
+# Hyderabad Nearby Services WebGIS – 10-Day Assignment
+
+A practical WebGIS project exploring healthcare accessibility using OpenStreetMap (OSM), Python, spatial analysis and open-source geospatial technologies.
+
+## Study Area
+
+**Serilingampally–Hafeezpet, Hyderabad, Telangana, India**
+
+- Selected wards: Ward 106 – Serilingampally and Ward 109 – Hafeezpet
+- Service category: Healthcare
+- Walking accessibility threshold: 15 minutes (1.2 km)
+- Walking speed assumption: 4.8 km/h
+- Project CRS: WGS 84 / UTM Zone 44N (EPSG:32644)
+
+## Day 1 Progress – Study Area and Data Preparation
+
+- Selected and mapped two adjacent study-area wards.
+- Downloaded 70 OSM healthcare records within the study area.
+- Conducted a 25-metre proximity-based duplicate candidate check.
+- Reviewed unnamed and potentially unmatched healthcare records.
+- Compared the study-area dataset with the existing Hyderabad services dataset.
+- Performed five independent service verification checks.
+- Saved screenshots and intermediate datasets for reproducibility.
+
+## Technology Stack
+
+Python | GeoPandas | Shapely | OpenStreetMap | PostgreSQL | PostGIS | Flask | GeoServer | MapLibre
+
+## Project Status
+
+**Day 1 – Study area selection and initial data-quality analysis completed.**
+
+Further phases, including spatial database optimization, GeoServer publication, accessibility analysis, web mapping and deployment, are planned.
+
+## Repository Structure
+
+- `analysis/` – Study-area analysis and GIS project files
+- `backend/` – Flask API
+- `data/` – Existing and study-area datasets
+- `evidence/day1/` – Screenshots documenting Day 1 progress
+- `frontend/` – WebGIS interface
+- `scripts/` – Data acquisition and processing scripts
+- `sql/` – Database schema
+- `ANSWERS.md` – Assignment questions and findings
+
+
+
+
+# Hyderabad Nearby Services WebGIS 
 
 This project starts from the supplied `data/wards.geojson` only. It does **not** assume that any previous database, service imports, Flask application, or GeoServer workspace exists. The supplied file contains 145 Polygon features, has a `Name` property (for example, `Ward 91 Khairatabad`), and its coordinates are longitude/latitude around Hyderabad. Because the file has no declared CRS, the workflow treats it as standard GeoJSON WGS 84 (`EPSG:4326`); its coordinate range is consistent with Hyderabad. Confirm the source metadata if you know it was exported in another CRS.
 
