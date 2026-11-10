@@ -1,4 +1,4 @@
-# Hyderabad Nearby Services WebGIS – 10-Day Assignment
+# Hyderabad Nearby Services WebGIS 
 
 A practical WebGIS project exploring healthcare accessibility using OpenStreetMap (OSM), Python, spatial analysis and open-source geospatial technologies.
 
