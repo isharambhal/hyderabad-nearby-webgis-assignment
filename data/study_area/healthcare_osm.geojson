@@ -1,0 +1,1685 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.332069,
+          17.493487
+        ]
+      },
+      "properties": {
+        "name": "Apollo Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.493487,
+        "longitude": 78.332069,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4665332403,
+        "source_id": "node/4665332403",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3136585,
+          17.487601
+        ]
+      },
+      "properties": {
+        "name": "Apollo Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.487601,
+        "longitude": 78.3136585,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4674755093,
+        "source_id": "node/4674755093",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3200137,
+          17.4787848
+        ]
+      },
+      "properties": {
+        "name": "Apollo Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4787848,
+        "longitude": 78.3200137,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4674771291,
+        "source_id": "node/4674771291",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3136987,
+          17.4876741
+        ]
+      },
+      "properties": {
+        "name": "Dr.Raju's Dental Care",
+        "category": "Dental Clinic",
+        "subcategory": "dentist",
+        "latitude": 17.4876741,
+        "longitude": 78.3136987,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4674771490,
+        "source_id": "node/4674771490",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3201835,
+          17.4781178
+        ]
+      },
+      "properties": {
+        "name": "Vaidehi Medical Hall",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4781178,
+        "longitude": 78.3201835,
+        "address": "",
+        "phone": "9848494696",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4674771689,
+        "source_id": "node/4674771689",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.327984,
+          17.4928587
+        ]
+      },
+      "properties": {
+        "name": "Happy Children's Hospital",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4928587,
+        "longitude": 78.327984,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4693614990,
+        "source_id": "node/4693614990",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3280937,
+          17.4895653
+        ]
+      },
+      "properties": {
+        "name": "Good Health Medical & General Store",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4895653,
+        "longitude": 78.3280937,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4693618891,
+        "source_id": "node/4693618891",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.327886,
+          17.4920821
+        ]
+      },
+      "properties": {
+        "name": "Apollo Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4920821,
+        "longitude": 78.327886,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4693618990,
+        "source_id": "node/4693618990",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3279081,
+          17.4928168
+        ]
+      },
+      "properties": {
+        "name": "Happy Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4928168,
+        "longitude": 78.3279081,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4693649489,
+        "source_id": "node/4693649489",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3276665,
+          17.4931295
+        ]
+      },
+      "properties": {
+        "name": "Kailash Medical & General Store",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4931295,
+        "longitude": 78.3276665,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4695594590,
+        "source_id": "node/4695594590",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3275773,
+          17.4921861
+        ]
+      },
+      "properties": {
+        "name": "Vanaja Hospital",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4921861,
+        "longitude": 78.3275773,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4695632089,
+        "source_id": "node/4695632089",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3276438,
+          17.4921633
+        ]
+      },
+      "properties": {
+        "name": "Vanaja Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4921633,
+        "longitude": 78.3276438,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4695632289,
+        "source_id": "node/4695632289",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3320075,
+          17.4940886
+        ]
+      },
+      "properties": {
+        "name": "My Health Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4940886,
+        "longitude": 78.3320075,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4700634989,
+        "source_id": "node/4700634989",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3201363,
+          17.4798944
+        ]
+      },
+      "properties": {
+        "name": "Padma Medical & General Stores",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4798944,
+        "longitude": 78.3201363,
+        "address": "",
+        "phone": "",
+        "opening_hours": "PH,Mo-Su 09:30-23:30",
+        "osm_type": "node",
+        "osm_id": 4713368296,
+        "source_id": "node/4713368296",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3201186,
+          17.4797494
+        ]
+      },
+      "properties": {
+        "name": "R. R. Medical & General Stores",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4797494,
+        "longitude": 78.3201186,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4713368298,
+        "source_id": "node/4713368298",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3202511,
+          17.48051
+        ]
+      },
+      "properties": {
+        "name": "Sri Sai Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.48051,
+        "longitude": 78.3202511,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4713381395,
+        "source_id": "node/4713381395",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3201181,
+          17.4797782
+        ]
+      },
+      "properties": {
+        "name": "Sri Venkateshwara Poly Clinic & Diagnostic Center",
+        "category": "Doctor",
+        "subcategory": "doctor",
+        "latitude": 17.4797782,
+        "longitude": 78.3201181,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4713433190,
+        "source_id": "node/4713433190",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3206338,
+          17.4832757
+        ]
+      },
+      "properties": {
+        "name": "Nakshatra Medical & General Stores",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4832757,
+        "longitude": 78.3206338,
+        "address": "",
+        "phone": "8143851043",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4713433191,
+        "source_id": "node/4713433191",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3201033,
+          17.4796545
+        ]
+      },
+      "properties": {
+        "name": "Apollo Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4796545,
+        "longitude": 78.3201033,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4713465890,
+        "source_id": "node/4713465890",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3202048,
+          17.4802057
+        ]
+      },
+      "properties": {
+        "name": "Dental Clinic (unnamed)",
+        "category": "Dental Clinic",
+        "subcategory": "dentist",
+        "latitude": 17.4802057,
+        "longitude": 78.3202048,
+        "address": "",
+        "phone": "9989958035",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4713466590,
+        "source_id": "node/4713466590",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3155659,
+          17.4835926
+        ]
+      },
+      "properties": {
+        "name": "Ayu Raaga",
+        "category": "Doctor",
+        "subcategory": "doctor",
+        "latitude": 17.4835926,
+        "longitude": 78.3155659,
+        "address": "",
+        "phone": "9885871500",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4764366298,
+        "source_id": "node/4764366298",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3156528,
+          17.4836046
+        ]
+      },
+      "properties": {
+        "name": "Health Care Medical & General Stores",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4836046,
+        "longitude": 78.3156528,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 4764366410,
+        "source_id": "node/4764366410",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3570817,
+          17.4488131
+        ]
+      },
+      "properties": {
+        "name": "Apollo Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4488131,
+        "longitude": 78.3570817,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 5299367317,
+        "source_id": "node/5299367317",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3587144,
+          17.4422328
+        ]
+      },
+      "properties": {
+        "name": "Himagiri Hospital",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4422328,
+        "longitude": 78.3587144,
+        "address": "",
+        "phone": "040 23004206;040 23004207;040 23004208;040 23004209",
+        "opening_hours": "Su 09:00-21:00",
+        "osm_type": "node",
+        "osm_id": 5405055776,
+        "source_id": "node/5405055776",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3594294,
+          17.4413816
+        ]
+      },
+      "properties": {
+        "name": "Apollo Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4413816,
+        "longitude": 78.3594294,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 5405056433,
+        "source_id": "node/5405056433",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3448275,
+          17.4943337
+        ]
+      },
+      "properties": {
+        "name": "Raja Hospital",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4943337,
+        "longitude": 78.3448275,
+        "address": "Madina Nagar, Main Road, Miyapur, Hyderabad",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 5783995954,
+        "source_id": "node/5783995954",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3315513,
+          17.492211
+        ]
+      },
+      "properties": {
+        "name": "Apollo Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.492211,
+        "longitude": 78.3315513,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6451226171,
+        "source_id": "node/6451226171",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.327158,
+          17.4932209
+        ]
+      },
+      "properties": {
+        "name": "Sandhya Nursing Home",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4932209,
+        "longitude": 78.327158,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6485786103,
+        "source_id": "node/6485786103",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3267166,
+          17.4939308
+        ]
+      },
+      "properties": {
+        "name": "Kadimi Nursing Home",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4939308,
+        "longitude": 78.3267166,
+        "address": "",
+        "phone": "040 23033599;040 23036926;",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6487508103,
+        "source_id": "node/6487508103",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3404388,
+          17.494784
+        ]
+      },
+      "properties": {
+        "name": "Sarada Nursing Home",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.494784,
+        "longitude": 78.3404388,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6494788582,
+        "source_id": "node/6494788582",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3268218,
+          17.4946701
+        ]
+      },
+      "properties": {
+        "name": "Sai Anurag Hosptial",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4946701,
+        "longitude": 78.3268218,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6503086685,
+        "source_id": "node/6503086685",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3208144,
+          17.4795206
+        ]
+      },
+      "properties": {
+        "name": "Urban Primary Health Centre Serilingampally (Urban)",
+        "category": "Clinic",
+        "subcategory": "clinic",
+        "latitude": 17.4795206,
+        "longitude": 78.3208144,
+        "address": "Opp Adhra Bank",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6539594008,
+        "source_id": "node/6539594008",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3415653,
+          17.4944322
+        ]
+      },
+      "properties": {
+        "name": "NAIDU EYE HOSPITAL",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4944322,
+        "longitude": 78.3415653,
+        "address": "Hyderabad",
+        "phone": "040 23043693",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6549141640,
+        "source_id": "node/6549141640",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3461505,
+          17.494321
+        ]
+      },
+      "properties": {
+        "name": "HEALIX HOSPITAL",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.494321,
+        "longitude": 78.3461505,
+        "address": "Hyderabad",
+        "phone": "04023044155; 42007070",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6549150740,
+        "source_id": "node/6549150740",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.348083,
+          17.4921363
+        ]
+      },
+      "properties": {
+        "name": "SRIKARA HOSPITALS",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4921363,
+        "longitude": 78.348083,
+        "address": "",
+        "phone": "04047470000",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6549190771,
+        "source_id": "node/6549190771",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3432363,
+          17.4947571
+        ]
+      },
+      "properties": {
+        "name": "HAPPY HOSPITAL",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4947571,
+        "longitude": 78.3432363,
+        "address": "Hyderabad",
+        "phone": "4023031113",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6549349841,
+        "source_id": "node/6549349841",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3165892,
+          17.4907299
+        ]
+      },
+      "properties": {
+        "name": "SubCentre Taranager (Urban)",
+        "category": "Yes",
+        "subcategory": "yes",
+        "latitude": 17.4907299,
+        "longitude": 78.3165892,
+        "address": "TaraNagar",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6656722791,
+        "source_id": "node/6656722791",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3202454,
+          17.4795083
+        ]
+      },
+      "properties": {
+        "name": "Shreya Hospitals",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4795083,
+        "longitude": 78.3202454,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6811749146,
+        "source_id": "node/6811749146",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3481324,
+          17.4919985
+        ]
+      },
+      "properties": {
+        "name": "Srikara Medical Store",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4919985,
+        "longitude": 78.3481324,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6822126561,
+        "source_id": "node/6822126561",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3296853,
+          17.4944955
+        ]
+      },
+      "properties": {
+        "name": "Gangaram Community Hall Health Sub Center",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4944955,
+        "longitude": 78.3296853,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 6830806688,
+        "source_id": "node/6830806688",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3402527,
+          17.4947985
+        ]
+      },
+      "properties": {
+        "name": "Titan eye plus",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4947985,
+        "longitude": 78.3402527,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 7007970916,
+        "source_id": "node/7007970916",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.341244,
+          17.4947296
+        ]
+      },
+      "properties": {
+        "name": "Ankura Children hospital",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4947296,
+        "longitude": 78.341244,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 7243959583,
+        "source_id": "node/7243959583",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3598439,
+          17.4409549
+        ]
+      },
+      "properties": {
+        "name": "Apollo Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4409549,
+        "longitude": 78.3598439,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 7243980109,
+        "source_id": "node/7243980109",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3588228,
+          17.4941356
+        ]
+      },
+      "properties": {
+        "name": "MedPlus",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4941356,
+        "longitude": 78.3588228,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 7244271146,
+        "source_id": "node/7244271146",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.351628,
+          17.493937
+        ]
+      },
+      "properties": {
+        "name": "Dr.agarwals",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.493937,
+        "longitude": 78.351628,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 7244398147,
+        "source_id": "node/7244398147",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3317723,
+          17.4921664
+        ]
+      },
+      "properties": {
+        "name": "MedPlus",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4921664,
+        "longitude": 78.3317723,
+        "address": "MMTS Road, hyderabad",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 8386705331,
+        "source_id": "node/8386705331",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3470745,
+          17.4940229
+        ]
+      },
+      "properties": {
+        "name": "Pace Hospitals ,Madinaguda",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4940229,
+        "longitude": 78.3470745,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 8748479530,
+        "source_id": "node/8748479530",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3631503,
+          17.4507108
+        ]
+      },
+      "properties": {
+        "name": "Praba's VCare Health Clinic (P) Ltd, Gachibowli",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4507108,
+        "longitude": 78.3631503,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 8759381105,
+        "source_id": "node/8759381105",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3574077,
+          17.4951229
+        ]
+      },
+      "properties": {
+        "name": "Udbhava Hospital ,Miyapur",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4951229,
+        "longitude": 78.3574077,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 8763316074,
+        "source_id": "node/8763316074",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3214286,
+          17.4795342
+        ]
+      },
+      "properties": {
+        "name": "Gopanpally, Serilingampally (Basthi Dawakhana)",
+        "category": "Yes",
+        "subcategory": "yes",
+        "latitude": 17.4795342,
+        "longitude": 78.3214286,
+        "address": "Gopanpally, Serilingampally",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 10991121937,
+        "source_id": "node/10991121937",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3468247,
+          17.4839859
+        ]
+      },
+      "properties": {
+        "name": "Kinige Digital Technologies pvt ltd near Hospital",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4839859,
+        "longitude": 78.3468247,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 11484345699,
+        "source_id": "node/11484345699",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3251889,
+          17.4834007
+        ]
+      },
+      "properties": {
+        "name": "Nehru Nagar (Basti Dawakhana)",
+        "category": "Yes",
+        "subcategory": "yes",
+        "latitude": 17.4834007,
+        "longitude": 78.3251889,
+        "address": "Papi Reddy Colony",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 11936430965,
+        "source_id": "node/11936430965",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3211069,
+          17.4795945
+        ]
+      },
+      "properties": {
+        "name": "SubCentre Serilingampally (Urban)",
+        "category": "Yes",
+        "subcategory": "yes",
+        "latitude": 17.4795945,
+        "longitude": 78.3211069,
+        "address": "Gopi Nagar",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 11937481299,
+        "source_id": "node/11937481299",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3611789,
+          17.4850487
+        ]
+      },
+      "properties": {
+        "name": "Primary Urban Health Centre  Hafeezpet (Urban)",
+        "category": "Yes",
+        "subcategory": "yes",
+        "latitude": 17.4850487,
+        "longitude": 78.3611789,
+        "address": "UHC Beside shiva temple",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 11937868090,
+        "source_id": "node/11937868090",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3208883,
+          17.4795998
+        ]
+      },
+      "properties": {
+        "name": "Government Homoeo Dispenary, Serlingampally (NRHM)",
+        "category": "Doctor",
+        "subcategory": "doctor",
+        "latitude": 17.4795998,
+        "longitude": 78.3208883,
+        "address": "Bapu Nagar",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 11940098996,
+        "source_id": "node/11940098996",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3333582,
+          17.4835688
+        ]
+      },
+      "properties": {
+        "name": "Vemana Colony, Chandanagar (Basthi Dawakhana)",
+        "category": "Yes",
+        "subcategory": "yes",
+        "latitude": 17.4835688,
+        "longitude": 78.3333582,
+        "address": "Vemana Colony, Chandanagar",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 11940186164,
+        "source_id": "node/11940186164",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3291582,
+          17.4846632
+        ]
+      },
+      "properties": {
+        "name": "Papireddy Nagar at Kukatpally (Basti Dawakhana)",
+        "category": "Yes",
+        "subcategory": "yes",
+        "latitude": 17.4846632,
+        "longitude": 78.3291582,
+        "address": "Kukatpally",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 11941208136,
+        "source_id": "node/11941208136",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3299514,
+          17.4937597
+        ]
+      },
+      "properties": {
+        "name": "Gangaram, Chandanagar (Basthi Dawakhana)",
+        "category": "Yes",
+        "subcategory": "yes",
+        "latitude": 17.4937597,
+        "longitude": 78.3299514,
+        "address": "Gangaram, Chandanagar",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 11942699605,
+        "source_id": "node/11942699605",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3605759,
+          17.4482414
+        ]
+      },
+      "properties": {
+        "name": "Pi Health Hospital",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4482414,
+        "longitude": 78.3605759,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 13285248846,
+        "source_id": "node/13285248846",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3608508,
+          17.4486131
+        ]
+      },
+      "properties": {
+        "name": "Haryansh Pharmacy",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4486131,
+        "longitude": 78.3608508,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 13285248847,
+        "source_id": "node/13285248847",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3610651,
+          17.4485611
+        ]
+      },
+      "properties": {
+        "name": "MedPlus",
+        "category": "Pharmacy",
+        "subcategory": "pharmacy",
+        "latitude": 17.4485611,
+        "longitude": 78.3610651,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 13285248849,
+        "source_id": "node/13285248849",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3583011,
+          17.4421985
+        ]
+      },
+      "properties": {
+        "name": "Kindle Clinics",
+        "category": "Doctor",
+        "subcategory": "doctor",
+        "latitude": 17.4421985,
+        "longitude": 78.3583011,
+        "address": "Plot No. 1 & 2, Old Mumbai Highway, Gachibowli, Hyderabad",
+        "phone": "+91 90000 22004",
+        "opening_hours": "Mo-Sa 10:00-20:00; Su off",
+        "osm_type": "node",
+        "osm_id": 14320597782,
+        "source_id": "node/14320597782",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3518468,
+          17.4611357
+        ]
+      },
+      "properties": {
+        "name": "True White Dental",
+        "category": "Dental Clinic",
+        "subcategory": "dentist",
+        "latitude": 17.4611357,
+        "longitude": 78.3518468,
+        "address": "Kondapur, Hyderabad",
+        "phone": "+91 91217 20153",
+        "opening_hours": "",
+        "osm_type": "node",
+        "osm_id": 14330548408,
+        "source_id": "node/14330548408",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3567621,
+          17.486686
+        ]
+      },
+      "properties": {
+        "name": "Urban Health Centre, Hafeezpet (Urban)",
+        "category": "Centre",
+        "subcategory": "centre",
+        "latitude": 17.486686,
+        "longitude": 78.3567621,
+        "address": "UHC Beside shiva temple",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "way",
+        "osm_id": 355889250,
+        "source_id": "way/355889250",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3202943,
+          17.4787512
+        ]
+      },
+      "properties": {
+        "name": "Hospital (unnamed)",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4787512,
+        "longitude": 78.3202943,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "way",
+        "osm_id": 596480014,
+        "source_id": "way/596480014",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3544335,
+          17.4945033
+        ]
+      },
+      "properties": {
+        "name": "Hospital (unnamed)",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4945033,
+        "longitude": 78.3544335,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "way",
+        "osm_id": 740696766,
+        "source_id": "way/740696766",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3574422,
+          17.495179
+        ]
+      },
+      "properties": {
+        "name": "Srikara  Robotics and Super Speciality Hospital",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.495179,
+        "longitude": 78.3574422,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "way",
+        "osm_id": 741855446,
+        "source_id": "way/741855446",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3374034,
+          17.4905853
+        ]
+      },
+      "properties": {
+        "name": "Lakshmi hospital",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4905853,
+        "longitude": 78.3374034,
+        "address": "Manjira Pipeline Road, hyderabad",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "way",
+        "osm_id": 902925307,
+        "source_id": "way/902925307",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3465269,
+          17.4941996
+        ]
+      },
+      "properties": {
+        "name": "siddarth hospital",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4941996,
+        "longitude": 78.3465269,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "way",
+        "osm_id": 1568846336,
+        "source_id": "way/1568846336",
+        "source": "OpenStreetMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.3465236,
+          17.4939372
+        ]
+      },
+      "properties": {
+        "name": "siddarth neuro hospital",
+        "category": "Hospital",
+        "subcategory": "hospital",
+        "latitude": 17.4939372,
+        "longitude": 78.3465236,
+        "address": "",
+        "phone": "",
+        "opening_hours": "",
+        "osm_type": "way",
+        "osm_id": 1568846337,
+        "source_id": "way/1568846337",
+        "source": "OpenStreetMap"
+      }
+    }
+  ]
+}

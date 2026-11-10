@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9eee9">
+
+  <title>Hyderabad Nearby Services | WebGIS</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  >
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">H</div>
+
+      <div class="brand-copy">
+        <p class="eyebrow">LOCATION INTELLIGENCE</p>
+        <h1>Hyderabad Nearby Services</h1>
+        <p class="subtitle">
+          Discover useful places around any location.
+        </p>
+      </div>
+    </div>
+
+    <div class="topbar-meta">
+      <span class="area-chip">
+        <span class="pulse-dot"></span>
+        Hyderabad, Telangana
+      </span>
+
+      <span id="api-status" class="status" role="status">
+        Connecting…
+      </span>
+    </div>
+  </header>
+
+  <main class="app-shell">
+
+    <!-- LEFT: LOCATION SELECTION -->
+    <aside class="left-column" aria-label="Location selection">
+
+      <section class="sidebar-intro">
+        <p class="eyebrow">EXPLORE THE CITY</p>
+        <h2>Choose a location</h2>
+        <p>
+          Set your search point to explore nearby services.
+        </p>
+      </section>
+
+      <section class="panel-section location-section">
+        <div class="section-title">
+          <span class="step-number">01</span>
+
+          <div>
+            <h2>Choose a location</h2>
+            <p>Where should we search?</p>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <label for="lat">
+            Latitude
+            <input
+              id="lat"
+              type="number"
+              step="any"
+              placeholder="17.3850"
+              autocomplete="off"
+            >
+          </label>
+
+          <label for="lon">
+            Longitude
+            <input
+              id="lon"
+              type="number"
+              step="any"
+              placeholder="78.4867"
+              autocomplete="off"
+            >
+          </label>
+        </div>
+
+        <div class="button-row">
+          <button
+            id="apply-coords"
+            class="button button-secondary"
+            type="button"
+          >
+            Use coordinates
+          </button>
+
+          <button
+            id="use-location"
+            class="button button-ghost"
+            type="button"
+          >
+            <span aria-hidden="true">⌖</span>
+            My location
+          </button>
+        </div>
+
+        <p class="microcopy">
+          Tip: click directly on the map to select a location.
+        </p>
+      </section>
+
+      <!-- Selected-location summary -->
+      <section class="location-summary" aria-live="polite">
+        <span class="summary-icon" aria-hidden="true">◎</span>
+
+        <div>
+          <p class="summary-label">SELECTED LOCATION</p>
+          <p id="location-summary-text">
+            Choose a point on the map or enter coordinates.
+          </p>
+        </div>
+      </section>
+
+      <div class="location-note">
+        <span class="note-icon" aria-hidden="true">i</span>
+        <p>
+          Your selected point is used as the centre of nearby searches.
+        </p>
+      </div>
+
+    </aside>
+
+    <!-- CENTRE: INTERACTIVE MAP -->
+    <section class="map-panel" aria-label="Interactive map">
+
+      <div class="map-toolbar">
+        <div class="map-heading">
+          <span class="map-live-dot"></span>
+          <span>Interactive map</span>
+        </div>
+
+        <span class="map-hint">
+          Click the map to set your search location
+        </span>
+      </div>
+
+      <div
+        id="map"
+        aria-label="Interactive map of Hyderabad wards and nearby services"
+      ></div>
+
+      <div class="map-legend">
+        <span class="legend-item">
+          <i class="legend-dot location-dot"></i>
+          Selected location
+        </span>
+
+        <span class="legend-item">
+          <i class="legend-dot result-dot"></i>
+          Search results
+        </span>
+
+        <span class="legend-item">
+          <i class="legend-line"></i>
+          Ward boundaries
+        </span>
+      </div>
+
+    </section>
+
+    <!-- RIGHT: FILTERS, MAP LAYERS AND RESULTS -->
+    <aside class="right-column" aria-label="Search filters and results">
+
+      <section class="panel-section filter-section">
+        <div class="section-title">
+          <span class="step-number">02</span>
+
+          <div>
+            <h2>Filter services</h2>
+            <p>Customise what you want to find.</p>
+          </div>
+        </div>
+
+        <label for="category">
+          Service category
+          <select id="category">
+            <option value="">All categories</option>
+          </select>
+        </label>
+
+        <label for="subcategory">
+          Subcategory
+          <select id="subcategory">
+            <option value="">All subcategories</option>
+          </select>
+        </label>
+
+        <label for="mode">
+          Search method
+          <select id="mode">
+            <option value="both">
+              Within radius · nearest results
+            </option>
+            <option value="radius">
+              All results within radius
+            </option>
+            <option value="nearest">
+              Nearest-N services
+            </option>
+          </select>
+        </label>
+
+        <div class="grid2">
+          <label for="radius">
+            Radius <span class="unit-label">(metres)</span>
+            <input
+              id="radius"
+              type="number"
+              min="1"
+              max="100000"
+              value="5000"
+            >
+          </label>
+
+          <label for="limit">
+            Result limit <span class="unit-label">(N)</span>
+            <input
+              id="limit"
+              type="number"
+              min="1"
+              max="100"
+              value="10"
+            >
+          </label>
+        </div>
+
+        <button
+          id="search"
+          class="button button-primary"
+          type="button"
+        >
+          <span>Find nearby services</span>
+          <span aria-hidden="true">→</span>
+        </button>
+      </section>
+
+      <!-- MAP LAYERS -->
+      <section class="panel-section layer-section">
+        <div class="section-title">
+          <span class="section-icon" aria-hidden="true">▧</span>
+
+          <div>
+            <h2>Map layers</h2>
+            <p>Show or hide published layers.</p>
+          </div>
+        </div>
+
+        <label class="layer-option" for="toggle-wards">
+          <input
+            id="toggle-wards"
+            type="checkbox"
+            checked
+          >
+          <span class="layer-swatch ward-swatch"></span>
+          <span class="layer-label">Ward boundaries</span>
+        </label>
+
+        <label class="layer-option" for="toggle-services">
+          <input
+            id="toggle-services"
+            type="checkbox"
+          >
+          <span class="layer-swatch service-swatch"></span>
+          <span class="layer-label">Published service points</span>
+        </label>
+
+        <p
+          id="geoserver-status"
+          class="message"
+          role="status"
+          aria-live="polite"
+        >
+          GeoServer layers are loading…
+        </p>
+      </section>
+
+      <!-- SEARCH RESULTS -->
+      <section class="panel-section results-section">
+        <div class="results-title">
+          <div>
+            <p class="eyebrow">YOUR SEARCH</p>
+            <h2>Results</h2>
+          </div>
+
+          <span id="result-count" class="result-count">0</span>
+        </div>
+
+        <div
+          id="message"
+          class="message"
+          role="status"
+          aria-live="polite"
+        >
+          Choose a location and run a search.
+        </div>
+
+        <div id="results" class="results"></div>
+      </section>
+
+      <footer class="sidebar-footer">
+        <span>Map data © OpenStreetMap contributors</span>
+        <span>Built with Leaflet · Flask · PostGIS</span>
+      </footer>
+
+    </aside>
+  </main>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script src="/app.js"></script>
+</body>
+</html>

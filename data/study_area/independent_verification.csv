@@ -1,0 +1,6 @@
+osm_id,facility_name,independent_source,verification_result,data_quality_note
+8763316074,Udbhava Super Speciality Hospital,Official hospital website,Verified,Hospital identity confirmed
+741855446,Srikara Robotics and Super Speciality Hospital,Official hospital website,Verified,Hospital identity confirmed; possible co-location with Udbhava requires further review
+7007970916,Titan Eye Plus,Independent business listing,Category mismatch,OSM hospital classification should be reviewed
+14330548408,True White Dental,Official dental clinic website,Verified,Dental service identity confirmed
+14320597782,Kindle Clinics,Official clinic website,Verified,Orthopaedic clinic identity confirmed

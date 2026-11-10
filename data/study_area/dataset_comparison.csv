@@ -1,0 +1,86 @@
+old_name,old_category,new_name,new_category,distance_metres,old_source_id,new_osm_id
+Apollo Pharmacy,Pharmacy,Apollo Pharmacy,Pharmacy,0.0,node/4665332403,4665332403
+Apollo Pharmacy,Pharmacy,Apollo Pharmacy,Pharmacy,0.0,node/4674755093,4674755093
+Apollo Pharmacy,Pharmacy,Dr.Raju's Dental Care,Dental Clinic,9.18,node/4674755093,4674771490
+Apollo Pharmacy,Pharmacy,Apollo Pharmacy,Pharmacy,0.0,node/4674771291,4674771291
+Vaidehi Medical Hall,Pharmacy,Vaidehi Medical Hall,Pharmacy,0.0,node/4674771689,4674771689
+Happy Children's Hospital,Hospital,Happy Children's Hospital,Hospital,0.0,node/4693614990,4693614990
+Happy Children's Hospital,Hospital,Happy Pharmacy,Pharmacy,9.3,node/4693614990,4693649489
+Good Health Medical & General Store,Pharmacy,Good Health Medical & General Store,Pharmacy,0.0,node/4693618891,4693618891
+Apollo Pharmacy,Pharmacy,Apollo Pharmacy,Pharmacy,0.0,node/4693618990,4693618990
+Happy Pharmacy,Pharmacy,Happy Children's Hospital,Hospital,9.3,node/4693649489,4693614990
+Happy Pharmacy,Pharmacy,Happy Pharmacy,Pharmacy,0.0,node/4693649489,4693649489
+Kailash Medical & General Store,Pharmacy,Kailash Medical & General Store,Pharmacy,0.0,node/4695594590,4695594590
+Vanaja Hospital,Hospital,Vanaja Hospital,Hospital,0.0,node/4695632089,4695632089
+Vanaja Hospital,Hospital,Vanaja Pharmacy,Pharmacy,7.49,node/4695632089,4695632289
+Vanaja Pharmacy,Pharmacy,Vanaja Hospital,Hospital,7.49,node/4695632289,4695632089
+Vanaja Pharmacy,Pharmacy,Vanaja Pharmacy,Pharmacy,0.0,node/4695632289,4695632289
+My Health Pharmacy,Pharmacy,My Health Pharmacy,Pharmacy,0.0,node/4700634989,4700634989
+Padma Medical & General Stores,Pharmacy,Padma Medical & General Stores,Pharmacy,0.0,node/4713368296,4713368296
+Padma Medical & General Stores,Pharmacy,R. R. Medical & General Stores,Pharmacy,16.23,node/4713368296,4713368298
+Padma Medical & General Stores,Pharmacy,Sri Venkateshwara Poly Clinic & Diagnostic Center,Doctor,13.06,node/4713368296,4713433190
+R. R. Medical & General Stores,Pharmacy,Padma Medical & General Stores,Pharmacy,16.23,node/4713368298,4713368296
+R. R. Medical & General Stores,Pharmacy,R. R. Medical & General Stores,Pharmacy,0.0,node/4713368298,4713368298
+R. R. Medical & General Stores,Pharmacy,Sri Venkateshwara Poly Clinic & Diagnostic Center,Doctor,3.2,node/4713368298,4713433190
+R. R. Medical & General Stores,Pharmacy,Apollo Pharmacy,Pharmacy,10.68,node/4713368298,4713465890
+Sri Sai Pharmacy,Pharmacy,Sri Sai Pharmacy,Pharmacy,0.0,node/4713381395,4713381395
+Sri Venkateshwara Poly Clinic & Diagnostic Center,Clinic,Padma Medical & General Stores,Pharmacy,13.06,node/4713433190,4713368296
+Sri Venkateshwara Poly Clinic & Diagnostic Center,Clinic,R. R. Medical & General Stores,Pharmacy,3.2,node/4713433190,4713368298
+Sri Venkateshwara Poly Clinic & Diagnostic Center,Clinic,Sri Venkateshwara Poly Clinic & Diagnostic Center,Doctor,0.0,node/4713433190,4713433190
+Sri Venkateshwara Poly Clinic & Diagnostic Center,Clinic,Apollo Pharmacy,Pharmacy,13.84,node/4713433190,4713465890
+Nakshatra Medical & General Stores,Pharmacy,Nakshatra Medical & General Stores,Pharmacy,0.0,node/4713433191,4713433191
+Apollo Pharmacy,Pharmacy,R. R. Medical & General Stores,Pharmacy,10.68,node/4713465890,4713368298
+Apollo Pharmacy,Pharmacy,Sri Venkateshwara Poly Clinic & Diagnostic Center,Doctor,13.84,node/4713465890,4713433190
+Apollo Pharmacy,Pharmacy,Apollo Pharmacy,Pharmacy,0.0,node/4713465890,4713465890
+Apollo Pharmacy,Pharmacy,Shreya Hospitals,Hospital,22.17,node/4713465890,6811749146
+Ayu Raaga,Clinic,Ayu Raaga,Doctor,0.0,node/4764366298,4764366298
+Ayu Raaga,Clinic,Health Care Medical & General Stores,Pharmacy,9.31,node/4764366298,4764366410
+Health Care Medical & General Stores,Pharmacy,Ayu Raaga,Doctor,9.31,node/4764366410,4764366298
+Health Care Medical & General Stores,Pharmacy,Health Care Medical & General Stores,Pharmacy,0.0,node/4764366410,4764366410
+Apollo Pharmacy,Pharmacy,Apollo Pharmacy,Pharmacy,0.0,node/5299367317,5299367317
+Himagiri Hospital,Hospital,Himagiri Hospital,Hospital,0.0,node/5405055776,5405055776
+Apollo Pharmacy,Pharmacy,Apollo Pharmacy,Pharmacy,0.0,node/5405056433,5405056433
+Raja Hospital,Hospital,Raja Hospital,Hospital,0.0,node/5783995954,5783995954
+Apollo Pharmacy,Pharmacy,Apollo Pharmacy,Pharmacy,0.0,node/6451226171,6451226171
+Apollo Pharmacy,Pharmacy,MedPlus,Pharmacy,23.96,node/6451226171,8386705331
+Sandhya Nursing Home,Hospital,Sandhya Nursing Home,Hospital,0.0,node/6485786103,6485786103
+Kadimi Nursing Home,Hospital,Kadimi Nursing Home,Hospital,0.0,node/6487508103,6487508103
+Sarada Nursing Home,Hospital,Sarada Nursing Home,Hospital,0.0,node/6494788582,6494788582
+Sarada Nursing Home,Hospital,Titan eye plus,Hospital,19.8,node/6494788582,7007970916
+Sai Anurag Hosptial,Hospital,Sai Anurag Hosptial,Hospital,0.0,node/6503086685,6503086685
+Urban Primary Health Centre Serilingampally (Urban),Clinic,Urban Primary Health Centre Serilingampally (Urban),Clinic,0.0,node/6539594008,6539594008
+Urban Primary Health Centre Serilingampally (Urban),Clinic,"Government Homoeo Dispenary, Serlingampally (NRHM)",Doctor,11.79,node/6539594008,11940098996
+NAIDU EYE HOSPITAL,Hospital,NAIDU EYE HOSPITAL,Hospital,0.0,node/6549141640,6549141640
+HEALIX HOSPITAL,Hospital,HEALIX HOSPITAL,Hospital,0.0,node/6549150740,6549150740
+SRIKARA HOSPITALS,Hospital,SRIKARA HOSPITALS,Hospital,0.0,node/6549190771,6549190771
+SRIKARA HOSPITALS,Hospital,Srikara Medical Store,Pharmacy,16.19,node/6549190771,6822126561
+HAPPY HOSPITAL,Hospital,HAPPY HOSPITAL,Hospital,0.0,node/6549349841,6549349841
+Shreya Hospitals,Hospital,Apollo Pharmacy,Pharmacy,22.17,node/6811749146,4713465890
+Shreya Hospitals,Hospital,Shreya Hospitals,Hospital,0.0,node/6811749146,6811749146
+Srikara Medical Store,Pharmacy,SRIKARA HOSPITALS,Hospital,16.19,node/6822126561,6549190771
+Srikara Medical Store,Pharmacy,Srikara Medical Store,Pharmacy,0.0,node/6822126561,6822126561
+Gangaram Community Hall Health Sub Center,Hospital,Gangaram Community Hall Health Sub Center,Hospital,0.0,node/6830806688,6830806688
+Titan eye plus,Hospital,Sarada Nursing Home,Hospital,19.8,node/7007970916,6494788582
+Titan eye plus,Hospital,Titan eye plus,Hospital,0.0,node/7007970916,7007970916
+Ankura Children hospital,Hospital,Ankura Children hospital,Hospital,0.0,node/7243959583,7243959583
+Apollo Pharmacy,Pharmacy,Apollo Pharmacy,Pharmacy,0.0,node/7243980109,7243980109
+MedPlus,Pharmacy,MedPlus,Pharmacy,0.0,node/7244271146,7244271146
+Dr.agarwals,Hospital,Dr.agarwals,Hospital,0.0,node/7244398147,7244398147
+MedPlus,Pharmacy,Apollo Pharmacy,Pharmacy,23.96,node/8386705331,6451226171
+MedPlus,Pharmacy,MedPlus,Pharmacy,0.0,node/8386705331,8386705331
+"Pace Hospitals ,Madinaguda",Hospital,"Pace Hospitals ,Madinaguda",Hospital,0.0,node/8748479530,8748479530
+"Praba's VCare Health Clinic (P) Ltd, Gachibowli",Hospital,"Praba's VCare Health Clinic (P) Ltd, Gachibowli",Hospital,0.0,node/8759381105,8759381105
+"Udbhava Hospital ,Miyapur",Hospital,"Udbhava Hospital ,Miyapur",Hospital,0.0,node/8763316074,8763316074
+"Udbhava Hospital ,Miyapur",Hospital,Srikara  Robotics and Super Speciality Hospital,Hospital,7.23,node/8763316074,741855446
+"Government Homoeo Dispenary, Serlingampally (NRHM)",Clinic,Urban Primary Health Centre Serilingampally (Urban),Clinic,11.79,node/11940098996,6539594008
+"Government Homoeo Dispenary, Serlingampally (NRHM)",Clinic,SubCentre Serilingampally (Urban),Yes,23.19,node/11940098996,11937481299
+"Government Homoeo Dispenary, Serlingampally (NRHM)",Clinic,"Government Homoeo Dispenary, Serlingampally (NRHM)",Doctor,0.0,node/11940098996,11940098996
+Pi Health Hospital,Hospital,Pi Health Hospital,Hospital,0.0,node/13285248846,13285248846
+Haryansh Pharmacy,Pharmacy,Haryansh Pharmacy,Pharmacy,0.0,node/13285248847,13285248847
+Haryansh Pharmacy,Pharmacy,MedPlus,Pharmacy,23.46,node/13285248847,13285248849
+MedPlus,Pharmacy,Haryansh Pharmacy,Pharmacy,23.46,node/13285248849,13285248847
+MedPlus,Pharmacy,MedPlus,Pharmacy,0.0,node/13285248849,13285248849
+Hospital (unnamed),Hospital,Hospital (unnamed),Hospital,0.0,way/596480014,596480014
+Lakshmi hospital,Hospital,Lakshmi hospital,Hospital,0.0,way/902925307,902925307
+siddarth hospital,Hospital,siddarth hospital,Hospital,0.0,way/1568846336,1568846336
+siddarth neuro hospital,Hospital,siddarth neuro hospital,Hospital,0.0,way/1568846337,1568846337

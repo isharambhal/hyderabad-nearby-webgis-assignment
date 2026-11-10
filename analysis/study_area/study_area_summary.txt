@@ -1,0 +1,33 @@
+HYDERABAD NEARBY SERVICES WEBGIS — STUDY AREA SUMMARY
+====================================================
+
+Registration / project: Hyderabad Nearby Services WebGIS
+Study theme: Healthcare accessibility
+Study area: Serilingampally–Hafeezpet, Hyderabad, Telangana, India
+Selected wards:
+  - Ward 106 Serilingampally: 11.5607 km²
+  - Ward 109 Hafeezpet:       3.9541 km²
+Combined dissolved area:      15.5148 km²
+
+Source file: wards.geojson (145 ward features)
+Source CRS: EPSG:4326
+Analysis CRS: EPSG:32644 (WGS 84 / UTM zone 44N)
+Geometry checks: both selected geometries valid; polygons share a boundary.
+Centroid (EPSG:32644): E 217707.189 m, N 1933973.584 m
+Centroid (WGS 84): latitude 17.4741253, longitude 78.3419608
+
+Planned accessibility parameters (assignment working assumptions):
+  Walking threshold: 15 minutes
+  Walking speed: 4.8 km/h
+  Equivalent walking distance: 1,200 metres
+
+Important validation still required:
+  1. Download/clip OSM healthcare features to this boundary.
+  2. Verify at least 15 relevant healthcare features are present.
+  3. Confirm the study boundary with the instructor if the class registration
+     sheet records only the city and not the sub-area.
+
+Files in this folder:
+  selected_wards.geojson — the two original ward polygons
+  study_area.geojson    — dissolved boundary of the two wards
+  study_area_summary.txt — area, CRS, centroid and validation notes
