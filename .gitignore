@@ -4,3 +4,6 @@ __pycache__/
 *.pyc
 .DS_Store
 .vscode/
+
+# Local backup files
+backend/app_backup_before_postgis_search.py
