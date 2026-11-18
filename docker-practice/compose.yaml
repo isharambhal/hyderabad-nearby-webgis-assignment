@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    container_name: webgis-compose-demo
+    ports:
+      - "8084:80"
+    restart: unless-stopped
