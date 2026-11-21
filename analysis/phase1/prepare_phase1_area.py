@@ -11,7 +11,7 @@ from pyproj import Transformer
 # 1. PROJECT PATHS
 # --------------------------------------------------
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 INPUT_FILE = (
     ROOT / "analysis" / "study_area" / "selected_wards.geojson"

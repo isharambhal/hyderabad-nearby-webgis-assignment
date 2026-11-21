@@ -27,7 +27,7 @@ from shapely.strtree import STRtree
 # 1. PATHS, SETTINGS, AND DATABASE
 # ============================================================
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 STUDY_FILE = ROOT / "analysis" / "study_area" / "study_area.geojson"
 WARDS_FILE = ROOT / "analysis" / "study_area" / "selected_wards.geojson"
