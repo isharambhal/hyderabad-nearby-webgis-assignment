@@ -82,3 +82,35 @@ See `ANSWERS.md`, `evidence/`, `study/`, `sql/` and `k8s/` for assignment answer
 ## Author
 Isha Rambhal
 M.Sc. Data Science and Spatial Analytics
+
+## Debugging Log
+
+### 1. PMTiles HTTP 404 Error
+
+**Problem:** The PMTiles archive initially returned HTTP 404 on GitHub Pages.
+
+**Observed output:**
+    HTTP_STATUS=404
+    DOWNLOADED=9379
+
+**Cause:** GitHub Actions publishes the client directory as the website root. Including /client/ in the public URL produced an incorrect path.
+
+**Fix:** Changed the URL from /client/tiles/h3_access.pmtiles to /tiles/h3_access.pmtiles.
+
+**Verification:**
+    HTTP_STATUS=206
+    DOWNLOADED=16384
+    Content-Range: bytes 0-16383/81219
+    Accept-Ranges: bytes
+
+### 2. PostgreSQL SQL Encoding Error
+
+**Problem:** PostgreSQL initially failed to execute the Q1 SQL script.
+
+**Observed error:** syntax error at or near "ï»¿"
+
+**Cause:** The SQL file contained a UTF-8 Byte Order Mark (BOM).
+
+**Fix:** Re-saved the SQL file using UTF-8 without BOM.
+
+**Verification:** The SQL script executed successfully and reproduced all seven documented Q1 measurements.
