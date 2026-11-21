@@ -1,0 +1,49 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webgis-client
+  namespace: webgis-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webgis-client
+  template:
+    metadata:
+      labels:
+        app: webgis-client
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: website
+              mountPath: /usr/share/nginx/html/index.html
+              subPath: index.html
+              readOnly: true
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+      volumes:
+        - name: website
+          configMap:
+            name: webgis-client-html
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webgis-client
+  namespace: webgis-k8s
+spec:
+  type: ClusterIP
+  selector:
+    app: webgis-client
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80

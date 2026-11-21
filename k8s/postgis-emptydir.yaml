@@ -1,0 +1,54 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgis-emptydir
+  namespace: webgis-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgis-emptydir
+  template:
+    metadata:
+      labels:
+        app: postgis-emptydir
+    spec:
+      containers:
+        - name: postgis
+          image: postgis/postgis:16-3.7
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_DB
+          volumeMounts:
+            - name: pgdata
+              mountPath: /var/lib/postgresql/data
+          readinessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - webgis_user
+                - -d
+                - webgis_k8s
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 5
+      volumes:
+        - name: pgdata
+          emptyDir: {}
