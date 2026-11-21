@@ -396,3 +396,21 @@ Practical evidence is stored in the following locations:
 - `study/06_killercoda_pod_intro.png` – Kubernetes Pod Introduction exercise.
 - `study/07_killercoda_deployment_basics.png` – Kubernetes Deployment Basics exercise.
 
+
+## Diagram: Container Deployment
+
+``mermaid
+flowchart TD
+ A[WebGIS Client] --> B[Docker Image]
+ B --> C[Kubernetes Deployment]
+ C --> D[WebGIS Pod]
+ E[PostGIS Database] --> F[StatefulSet]
+ F --> G[PostGIS Pod]
+ G --> H[Persistent Volume]
+ D --> G
+``
+
+
+## Visual Diagram
+
+![Study diagram](../evidence/diagrams/S4_docker_and_kubernetes.png)

@@ -338,3 +338,20 @@ After completing this exercise, I can:
 - Complete WFS 2.0 GetFeature filtering using named healthcare facilities.
 - Publish the DEM through GeoServer as a WMS and WCS coverage.
 - Test the OGC services through the WebGIS client.
+
+## Diagram: OGC Web Services Workflow
+
+``mermaid
+flowchart TD
+ A[Geospatial Data] --> B[PostGIS Database]
+ B --> C[GeoServer]
+ C --> D[WMS Map Images]
+ C --> E[WFS Geographic Features]
+ D --> F[Web GIS Client]
+ E --> F
+``
+
+
+## Visual Diagram
+
+![Study diagram](../evidence/diagrams/S1_ogc_services_and_crs.png)

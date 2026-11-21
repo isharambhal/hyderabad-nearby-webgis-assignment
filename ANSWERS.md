@@ -634,9 +634,26 @@ Screenshots are stored in `evidence/phase4/`:
 ### Measurement Notes
 
 The measurements were collected using Chrome Developer Tools Network panel. The WFS GeoJSON request transferred approximately 1,025 KB and took 1.52 seconds. The WMS and MVT request counts and transferred sizes were recorded at zoom levels 12, 14 and 16. These measurements depend on the browser viewport, map extent, cache state and network conditions. The recorded WMS totals should be checked against the WMS-filtered screenshots to ensure unrelated page requests are excluded. Response times for individual WMS and MVT tests were not separately recorded.
-## Q10. Kubernetes StatefulSet, PVC Persistence and emptyDir Comparison
+## Q10. Single-Stage and Multi-Stage Docker Image Comparison
 
-A two-node Kubernetes kind cluster was created through Docker Desktop. PostGIS 16 with PostGIS 3.7 was deployed using a StatefulSet in the `webgis-k8s` namespace.
+Both Docker images were built successfully for the static Nginx WebGIS client.
+
+| Measurement | Multi-stage | Single-stage |
+|---|---:|---:|
+| Docker image size (bytes) | 93,671,942 | 93,676,477 |
+| Docker image size (decimal MB) | 93.671942 | 93.676477 |
+
+The multi-stage image was smaller by **4,535 bytes**, approximately **0.0048%**.
+
+Docker history showed that both images used the same Nginx base image and contained approximately 53.2 KB of website content.
+
+The size difference was negligible because this application is a small static website and the final images share the same Nginx runtime. The multi-stage build keeps its separate build stage out of the final image, but it does not produce a substantial size reduction for this particular application.
+
+
+**Comparison limitation:** Both tested images used `nginx:alpine` as the base image. Therefore, this experiment compares single-stage and multi-stage builds using the same Alpine base, rather than the assignment's requested full-base single-stage versus slim/Alpine multi-stage comparison.
+## Q11. Kubernetes Self-Healing and Persistent Storage
+
+A two-node Kubernetes cluster was created through Docker Desktop Kubernetes. PostGIS 16 with PostGIS 3.7 was deployed using a StatefulSet in the `webgis-k8s` namespace.
 
 Configuration:
 - Database: `webgis_k8s`
@@ -657,21 +674,8 @@ The WebGIS client was also deployed using an Nginx Deployment, a ConfigMap and a
 
 Observed PostGIS pod recovery time: **18.5 seconds**.
 
-## Q11. Single-Stage and Multi-Stage Docker Image Comparison
 
-Both Docker images were built successfully for the static Nginx WebGIS client.
-
-| Measurement | Multi-stage | Single-stage |
-|---|---:|---:|
-| Docker image size (bytes) | 93,671,942 | 93,676,477 |
-| Docker image size (decimal MB) | 93.671942 | 93.676477 |
-
-The multi-stage image was smaller by **4,535 bytes**, approximately **0.0048%**.
-
-Docker history showed that both images used the same Nginx base image and contained approximately 53.2 KB of website content.
-
-The size difference was negligible because this application is a small static website and the final images share the same Nginx runtime. The multi-stage build keeps its separate build stage out of the final image, but it does not produce a substantial size reduction for this particular application.
-
+**Timing evidence note:** The 18.5-second recovery time was measured with a PowerShell stopwatch while polling pod readiness. Separate timestamps from `kubectl get pods -w` were not captured.
 ## Q12. PMTiles and HTTP Range Request Performance
 
 The H3 accessibility GeoJSON was converted into a PMTiles vector tile archive using Tippecanoe 2.80.0.
@@ -683,4 +687,15 @@ The H3 accessibility GeoJSON was converted into a PMTiles vector tile archive us
 - Output: `client/tiles/h3_access.pmtiles`
 - Archive size: 81,219 bytes
 
-The archive was generated successfully. Public HTTP Range request testing and the comparison with the earlier Q9 measurements are pending.
+The archive was generated successfully and published through GitHub Pages. HTTP Range support was verified using curl.exe.
+
+- HTTP status: 206 Partial Content
+- Requested byte range: 0-16383
+- Content-Range: bytes 0-16383/81219
+- Bytes downloaded: 16,384
+- Accept-Ranges: bytes
+- Full archive size: 81,219 bytes
+
+The request transferred approximately 20.17% of the archive rather than its entire contents. This demonstrates that GitHub Pages supports partial byte-range delivery for the PMTiles archive.
+
+Compared with Q9, the PMTiles archive is approximately 79.3 KiB, while the earlier WFS response was approximately 1,025 KB. These represent different delivery methods and data scopes, so the comparison is indicative rather than a direct like-for-like benchmark.

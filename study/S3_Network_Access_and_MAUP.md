@@ -306,3 +306,21 @@ The following diagram can be used to explain the main concepts covered in this s
 - Compare network distances with straight-line distances.
 - Compare healthcare distribution using ward boundaries and H3 resolutions 8 and 9.
 - Examine how different spatial units affect the interpretation of healthcare accessibility results.
+
+## Diagram: Network Accessibility Analysis
+
+``mermaid
+flowchart TD
+ A[Healthcare Facilities] --> B[Pedestrian Network]
+ C[Study Area and Buildings] --> D[Origin Points]
+ B --> E[Network Distance Analysis]
+ D --> E
+ E --> F[15 Minute Service Areas]
+ F --> G[H3 Aggregation]
+ G --> H[Accessibility Comparison]
+``
+
+
+## Visual Diagram
+
+![Study diagram](../evidence/diagrams/S3_network_access_and_maup.png)

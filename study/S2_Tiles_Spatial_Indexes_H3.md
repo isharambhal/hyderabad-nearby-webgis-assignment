@@ -362,3 +362,20 @@ The H3 aggregation and MVT/PMTiles generation will be performed during the relev
 - Publish MVT through pg_tileserv.
 - Package vector tiles using PMTiles.
 - Compare tile requests and performance in the MapLibre client.
+## Diagram: Spatial Indexing and H3
+
+``mermaid
+flowchart TD
+ A[Spatial Dataset] --> B[PostGIS]
+ B --> C[GiST Spatial Index]
+ B --> D[H3 Indexing]
+ C --> E[Spatial Queries]
+ D --> F[Hexagonal Cells]
+ E --> G[Map Visualisation]
+ F --> G
+``
+
+
+## Visual Diagram
+
+![Study diagram](../evidence/diagrams/S2_tiles_indexes_h3.png)
