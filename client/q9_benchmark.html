@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q9 Performance Benchmark | Hyderabad WebGIS</title>
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",Arial,sans-serif;color:#213448;background:#f2f6fa}
+header{background:#153753;color:white;padding:16px 22px}header h1{margin:0;font-size:19px}header p{margin:5px 0 0;color:#d0e0ec;font-size:12px}
+main{display:grid;grid-template-columns:290px minmax(0,1fr);height:calc(100vh - 70px)}
+aside{padding:16px;overflow-y:auto;background:#f8fafc;border-right:1px solid #dbe4ec}
+.panel{background:white;border:1px solid #dce5ed;border-radius:12px;padding:14px;margin-bottom:12px}
+h2{font-size:13px;margin:0 0 12px;color:#173d5b}
+label{display:block;margin:10px 0 6px;font-size:11px;color:#617386;font-weight:700;text-transform:uppercase}
+select,button{width:100%;border-radius:7px;padding:10px;font-size:12px}
+select{border:1px solid #cbd8e3;background:#fff;color:#22394e}
+button{border:0;background:#0d9690;color:white;font-weight:700;cursor:pointer;margin-top:12px}
+button:disabled{opacity:.6;cursor:wait}
+#status{font-size:11px;line-height:1.5;color:#52677a;overflow-wrap:anywhere}
+.note{font-size:11px;color:#65798b;line-height:1.5}
+.method{padding:8px 0;border-top:1px solid #edf1f5;font-size:12px}.method:first-of-type{border-top:0}
+.map-wrap{position:relative;min-width:0}#map{position:absolute;inset:0}
+.map-label{position:absolute;z-index:2;top:12px;left:12px;background:rgba(255,255,255,.95);padding:9px 12px;border-radius:8px;box-shadow:0 4px 16px #193b571a;font-size:11px;pointer-events:none}
+.map-label strong{display:block;color:#153753;margin-bottom:3px}
+@media(max-width:700px){main{grid-template-columns:1fr;grid-template-rows:auto minmax(420px,1fr);height:auto}.map-wrap{height:65vh}}
+</style>
+</head>
+<body>
+<header><h1>Q9 · Building Layer Performance Benchmark</h1><p>Compare tiled WMS PNG, one WFS GeoJSON request and pg_tileserv MVT for the same Hyderabad buildings layer</p></header>
+<main>
+<aside>
+<section class="panel">
+<h2>Run one benchmark at a time</h2>
+<label for="method">Delivery method</label>
+<select id="method">
+<option value="wms">A · GeoServer tiled WMS (PNG)</option>
+<option value="wfs">B · GeoServer WFS (one GeoJSON request)</option>
+<option value="mvt">C · pg_tileserv (MVT vector tiles)</option>
+</select>
+<label for="zoom">Zoom level</label>
+<select id="zoom"><option value="12">Zoom 12</option><option value="14">Zoom 14</option><option value="16">Zoom 16</option></select>
+<button id="run" type="button">Load selected test layer</button>
+</section>
+<section class="panel">
+<h2>What to record in DevTools</h2>
+<div class="method"><strong>Requests</strong> — number of requests for the selected layer only.</div>
+<div class="method"><strong>Transferred</strong> — total KB for the selected layer only.</div>
+<div class="method"><strong>Finish time</strong> — elapsed time until the selected layer's requests finish.</div>
+</section>
+<section class="panel">
+<h2>Current test status</h2><p id="status">Map is starting. Choose a method and zoom, then press Load selected test layer.</p>
+</section>
+<section class="panel">
+<h2>Important measurement notes</h2>
+<p class="note">Keep the browser window size and map centre the same for all runs. In Chrome DevTools → Network, enable Disable cache and clear the request list before every run.</p>
+<p class="note">Count only requests for the selected buildings service. Ignore OpenStreetMap basemap requests and MapLibre style/library requests.</p>
+<p class="note">For WFS, expect one GeoJSON feature request. WMS and MVT request multiple map tiles as needed by the viewport and zoom.</p>
+</section>
+</aside>
+<section class="map-wrap"><div id="map"></div><div class="map-label"><strong>Hyderabad study area · Ward 106 & Ward 109</strong>Fixed centre: 78.3377°E, 17.4671°N</div></section>
+</main>
+<script>
+const CENTER=[78.3377,17.4671];
+const wmsTileUrl='http://localhost:8085/geoserver/hyderabad/wms?service=WMS&version=1.1.1&request=GetMap&layers=hyderabad:phase2_buildings&styles=&format=image/png&transparent=true&srs=EPSG:3857&width=256&height=256&bbox={bbox-epsg-3857}';
+const wfsUrl='http://localhost:8085/geoserver/hyderabad/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=hyderabad:phase2_buildings&outputFormat=application/json';
+const mvtTileUrl='http://localhost:7800/public.phase2_buildings/{z}/{x}/{y}.pbf';
+const map=new maplibregl.Map({container:'map',center:CENTER,zoom:12,style:{version:8,sources:{osm:{type:'raster',tiles:['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],tileSize:256,attribution:'© OpenStreetMap contributors'}},layers:[{id:'osm-base',type:'raster',source:'osm'}]}});
+map.addControl(new maplibregl.NavigationControl(),'top-right');map.addControl(new maplibregl.ScaleControl(),'bottom-right');
+const statusNode=document.getElementById('status'),runButton=document.getElementById('run');let activeMethod=null,runStartedAt=0;
+function setStatus(message){statusNode.textContent=message}
+function removeTestLayer(){
+['buildings-wms-layer','buildings-wfs-layer','buildings-mvt-layer'].forEach(id=>{if(map.getLayer(id))map.removeLayer(id)});
+['buildings-wms-source','buildings-wfs-source','buildings-mvt-source'].forEach(id=>{if(map.getSource(id))map.removeSource(id)});
+activeMethod=null;
+}
+async function loadMethod(method){
+removeTestLayer();runStartedAt=performance.now();activeMethod=method;
+if(method==='wms'){
+map.addSource('buildings-wms-source',{type:'raster',tiles:[wmsTileUrl],tileSize:256});
+map.addLayer({id:'buildings-wms-layer',type:'raster',source:'buildings-wms-source',paint:{'raster-opacity':0.8}});
+setStatus('WMS PNG layer added. Wait until map loading settles, then read Network metrics for localhost:8085/geoserver/hyderabad/wms.');
+}
+if(method==='wfs'){
+setStatus('Fetching the WFS GeoJSON collection (one request)…');
+const response=await fetch(wfsUrl);if(!response.ok)throw new Error('WFS HTTP '+response.status);
+const data=await response.json();if(!Array.isArray(data.features))throw new Error('WFS response is not a GeoJSON FeatureCollection.');
+map.addSource('buildings-wfs-source',{type:'geojson',data});
+map.addLayer({id:'buildings-wfs-layer',type:'fill',source:'buildings-wfs-source',paint:{'fill-color':'#557f9f','fill-opacity':0.48,'fill-outline-color':'#294d69'}});
+const elapsed=((performance.now()-runStartedAt)/1000).toFixed(2);
+setStatus('WFS loaded: '+data.features.length.toLocaleString()+' building features. Fetch elapsed time: '+elapsed+' s. In Network, select the single GetFeature GeoJSON request for transferred KB and timing.');
+}
+if(method==='mvt'){
+map.addSource('buildings-mvt-source',{type:'vector',tiles:[mvtTileUrl],minzoom:0,maxzoom:22});
+map.addLayer({id:'buildings-mvt-layer',type:'fill',source:'buildings-mvt-source','source-layer':'public.phase2_buildings',paint:{'fill-color':'#557f9f','fill-opacity':0.62,'fill-outline-color':'#294d69'}});
+setStatus('MVT layer added. Wait until map loading settles, then read Network metrics for requests to localhost:7800/public.phase2_buildings.');
+}
+map.once('idle',()=>{const elapsed=((performance.now()-runStartedAt)/1000).toFixed(2);if(method!=='wfs')setStatus(method.toUpperCase()+' map layer became idle after approximately '+elapsed+' s. Use DevTools Network for request count and transferred KB.')});
+}
+map.on('load',()=>setStatus('Ready. Open DevTools → Network, enable Disable cache, clear the request list, choose a method and zoom, then press Load selected test layer.'));
+runButton.addEventListener('click',async()=>{if(!map.loaded()){setStatus('Map is still loading. Try again in a moment.');return}runButton.disabled=true;const method=document.getElementById('method').value,zoom=Number(document.getElementById('zoom').value);try{map.jumpTo({center:CENTER,zoom});await new Promise(resolve=>setTimeout(resolve,500));await loadMethod(method)}catch(error){console.error(error);setStatus('Test failed: '+error.message)}finally{runButton.disabled=false}});
+map.on('error',event=>console.warn('MapLibre service/rendering message:',event.error||event));
+</script>
+</body>
+</html>

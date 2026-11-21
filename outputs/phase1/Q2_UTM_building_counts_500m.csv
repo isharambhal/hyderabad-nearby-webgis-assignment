@@ -1,0 +1,188 @@
+﻿healthcare_feature_id,service_name,category,buildings_within_500m
+1,,pharmacy,576
+2,MedPlus,pharmacy,666
+3,LEAF HOSPITAL,hospital,641
+4,Hetero,pharmacy,666
+5,Ambicare Hospital,hospital,653
+6,,pharmacy,73
+7,haritha hospitals,hospital,584
+8,Apollo Pharmacy,pharmacy,541
+9,Apollo Pharmacy,pharmacy,546
+10,MedPlus,pharmacy,527
+11,Aparna Pharmacy,pharmacy,481
+12,Apollo Pharmacy,pharmacy,727
+13,,pharmacy,842
+14,,pharmacy,832
+15,More;Apollo Pharmacy,pharmacy,836
+16,,pharmacy,840
+17,Sai Krishna Pharmacy,pharmacy,826
+18,Apoolo Clinic,hospital,496
+19,Vasan Dental Care,dentist,697
+20,Apollo Pharmacy,pharmacy,1155
+21,Vasan Eye Care Hospital,hospital,708
+22,Apollo Pharmacy,pharmacy,983
+23,Sri Sai Santhoshi Superspeciality Dental Clinic,clinic,1472
+24,Apollo Pharmacy,pharmacy,1605
+25,Dr.Raju's Dental Care,dentist,983
+26,Vaidehi Medical Hall,pharmacy,1572
+27,KIMS HOSPITAL,hospital,655
+28,Happy Children's Hospital,hospital,1491
+29,Good Health Medical & General Store,pharmacy,1875
+30,Apollo Pharmacy,pharmacy,1607
+31,Happy Pharmacy,pharmacy,1498
+32,Kailash Medical & General Store,pharmacy,1474
+33,Vanaja Hospital,hospital,1574
+34,Vanaja Pharmacy,pharmacy,1583
+35,Apollo Pharmacy,pharmacy,1555
+36,My Health Pharmacy,pharmacy,1003
+37,Padma Medical & General Stores,pharmacy,1576
+38,R. R. Medical & General Stores,pharmacy,1589
+39,Sri Sai Pharmacy,pharmacy,1578
+40,Sri Venkateshwara Poly Clinic & Diagnostic Center,doctor,1582
+41,Nakshatra Medical & General Stores,pharmacy,1520
+42,Apollo Pharmacy,pharmacy,1597
+43,,dentist,1571
+44,Archana Hospital,hospital,539
+45,Abhinav Medical & General Store,pharmacy,1279
+46,Ayu Raaga,doctor,881
+47,Health Care Medical & General Stores,pharmacy,882
+48,Apollo Pharmacy,pharmacy,633
+49,MedPlus,pharmacy,494
+50,Himagiri Hospital,hospital,912
+51,Apollo Pharmacy,pharmacy,838
+52,Profile dental care,dentist,541
+53,Physiotheorpy,physiotherapist,496
+54,Raja Hospital,hospital,802
+55,"Apollo Dental Clinic, Hitech City",hospital,124
+56,Maxi vision eye clinic,clinic,124
+57,Medical Store,pharmacy,124
+58,,pharmacy,60
+59,Apollo Pharmacy,pharmacy,1515
+60,Pranaam Hospitals,hospital,691
+61,Vijaya Nursing Home,hospital,1251
+62,Sri Shankara Nethralaya,doctor,860
+63,Sandhya Nursing Home,hospital,1496
+64,Sai Siva Children’s Hospital,hospital,1680
+65,Kadimi Nursing Home,hospital,1482
+66,Ragi Hospital,hospital,675
+67,Mirra Multi Specialty Hospital,hospital,866
+68,RR Orthopedic Hospital,hospital,1460
+69,Sarada Nursing Home,hospital,571
+70,Vishnu Hospital,hospital,1422
+71,Kiran Swetha Children Clinic,hospital,1591
+72,Mythri Multi Speciality Hospital,hospital,524
+73,Sai Anurag Hosptial,hospital,1396
+74,Anitha Nursing Home,hospital,1671
+75,Shilpa Nursing Home,hospital,823
+76,Sri Pallavi Hospital,doctor,1132
+77,Sidhartha Nursing Home,hospital,684
+78,American Oncology Institute,hospital,203
+79,Citizens Specialty Hospital,hospital,200
+80,Maruthi Hospital,hospital,1191
+81,Rajitha Hospital,hospital,971
+82,Urban Primary Health Centre Serilingampally (Urban),clinic,1791
+83,MAXCURE SUYOSHA WOMAN & CHILD HOSPITAL,hospital,204
+84,Kakatiya Hospital,hospital,1661
+85,ENT CARE HOSPITAL,hospital,181
+86,NAIDU EYE HOSPITAL,hospital,696
+87,HEALIX HOSPITAL,hospital,809
+88,SRIKARA HOSPITALS,hospital,1270
+89,REFRACTO EYE HOSPITAL (A GROUP OF CREDIBLE HEALTH CARE PVT LTD ),hospital,638
+90,VIJAYA SREE HOSPITAL,hospital,1405
+91,HAPPY HOSPITAL,hospital,756
+92,MOTHERHOOD FERTILITY CENTRE,hospital,649
+93,Citizens Speciality Hospital's Blood Bank,blood_bank,182
+94,Bharat Heavy Electricals Limited Hospital's Blood Bank,blood_bank,256
+95,Vijaya Hospital,hospital,631
+96,Motherhood Clinic,hospital,100
+97,SubCentre Vemukunta (Urban),yes,676
+98,"SubCentre, Chanda Nagar (Urban)",centre,1078
+99,SubCentre Taranager (Urban),yes,1226
+100,"SubCentre, Kothaguda (Urban)",centre,295
+101,SubCentre Gachibowli (Urban),yes,1301
+102,Partha Dental Clinic,dentist,667
+103,SV Care Poly Clinic,clinic,540
+104,Shreya Hospitals,hospital,1640
+105,Archana Multi Speciality Hospital,hospital,1720
+106,Srikara Medical Store,pharmacy,1287
+107,Gangaram Community Hall Health Sub Center,hospital,1121
+108,Amar Dental Clinic,clinic,881
+109,KIMS Cruddle,hospital,649
+110,Apollo,hospital,466
+111,Titan eye plus,hospital,555
+112,Apollo Pharmacy,pharmacy,730
+113,Sai Krishna Pharmacy,pharmacy,812
+114,Unkonwn Pharmacy,pharmacy,833
+115,Ankura Children hospital,hospital,646
+116,Apollo Pharmacy,pharmacy,801
+117,MedPlus,pharmacy,803
+118,,clinic,671
+119,,clinic,667
+120,Dr.agarwals,hospital,937
+121,,pharmacy,674
+122,MedPlus,pharmacy,840
+123,Sudhir Children Hospital,doctor,776
+124,Suraksha Vaccination Centre,yes,768
+125,Sarala Medical & General Stores,pharmacy,775
+126,Tirumala Nursing home,hospital,818
+127,Aditya Pharmacy,pharmacy,389
+128,MedPlus,pharmacy,1512
+129,"Medicover Hospital ,Chandanagar",hospital,542
+130,"Preeti Urology & Kidney Hospital ,BHEL, Lingampally",hospital,1058
+131,Archana Hospital,hospital,1717
+132,Rainbow Children Hospital,hospital,295
+133,"Pace Hospitals ,Madinaguda",hospital,934
+134,Health Valley Hospital,hospital,582
+135,"Praba's VCare Health Clinic (P) Ltd, Gachibowli",hospital,846
+136,"Udbhava Hospital ,Miyapur",hospital,851
+137,Chenna reddy hospital,hospital,1658
+138,,hospital,808
+139,Dr Agarwals Eye Hospital,hospital,274
+140,Ucchvas,yes,296
+141,"Madhuranagar, Serlingampally (Basthi Dawakhana)",yes,1754
+142,"BDK MAHILA BHAVAN, INDIRA NAGAR, TELLAPUR",yes,189
+143,"Gopanpally, Serilingampally (Basthi Dawakhana)",yes,1953
+144,"Urban Primary Health Centre, Warangal-1 (New Peddammagadda)",clinic,1585
+145,SubCentre Kothaguda (Urban),yes,306
+146,"Prem Nagar, Kodapur (Basti Dawakhana)",yes,2103
+147,Kinige Digital Technologies pvt ltd near Hospital,hospital,288
+148,Omega Hospitals,hospital,413
+149,"HMT Satyavahana CH, Hydernagar (Basthi Dawakhana)",yes,515
+150,BDK BANDAMKOMMU (MAHILA BHAVAN),yes,481
+151,"Government Ayurvedic Dispensary, Kondapur(NRHM)",doctor,863
+152,Sai Ram Nagar Colony Community Hall,yes,877
+153,"Indiranagar, Gachibowli, Chandanagar (Basthi Dawakhana)",yes,1705
+154,Nehru Nagar (Basti Dawakhana),yes,1974
+155,SubCentre Serilingampally (Urban),yes,1882
+156,Primary Urban Health Centre  Hafeezpet (Urban),yes,827
+157,"Naddigadda Tanda, Serilingampally (Basthi Dawakhana)",yes,858
+158,"Government Homoeo Dispenary, Serlingampally (NRHM)",doctor,1819
+159,"Vemana Colony, Chandanagar (Basthi Dawakhana)",yes,1641
+160,Papireddy Nagar at Kukatpally (Basti Dawakhana),yes,2302
+161,"Gangaram, Chandanagar (Basthi Dawakhana)",yes,1298
+162,Saleem Nagar (Basthi Dawakhana),yes,1599
+163,"Elite Aesthetics Skin, Hair Care Clinics, Kondapur",doctor,623
+164,Pi Health Hospital,hospital,999
+165,Haryansh Pharmacy,pharmacy,985
+166,MedPlus,pharmacy,1017
+167,Arete Hospitals,hospital,64
+168,Medicover,hospital,156
+169,Kindle Clinics,doctor,874
+170,True White Dental,dentist,889
+171,Health Centre,clinic,78
+172,AIG HOSPITALS,hospital,895
+173,"Government Area Hospital, Kondapur",hospital,868
+174,BHEL Hospital,hospital,263
+175,"Urban Health Centre, Hafeezpet (Urban)",centre,847
+176,"VHeal ENT, ORTHO and Multispeciality Center",hospital,1416
+177,,hospital,207
+178,,hospital,1680
+179,Care Hospitals,hospital,198
+180,,hospital,200
+181,,hospital,1001
+182,Srikara  Robotics and Super Speciality Hospital,hospital,853
+183,Calvary Temple Sunday Clinic,clinic,360
+184,Lakshmi hospital,hospital,639
+185,MedPlus,pharmacy,103
+186,siddarth hospital,hospital,847
+187,siddarth neuro hospital,hospital,916

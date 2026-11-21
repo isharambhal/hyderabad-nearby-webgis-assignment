@@ -1,0 +1,5 @@
+﻿resolution,ward_name,cell_count,building_footprint_area_m2,network_covered_4_8_pct,buffer_covered_4_8_pct,network_covered_3_6_pct,coverage_loss_percentage_points
+8,Ward_1,5,672411.39,100.0,100.0,100.0,0.0
+8,Ward_2,13,1027219.19,42.66,87.77,33.78,8.88
+9,Ward_1,36,898960.03,100.0,100.0,99.06,0.94
+9,Ward_2,109,1385720.9,58.98,88.06,55.07,3.91

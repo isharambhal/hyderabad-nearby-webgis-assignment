@@ -7,3 +7,27 @@ __pycache__/
 
 # Local backup files
 backend/app_backup_before_postgis_search.py
+
+.env.compose
+
+# Large raw geospatial datasets
+data/raw/
+
+# Temporary cache
+cache/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+
+# Local generated databases
+*.sqlite
+*.db
+
+# Temporary vector tile test
+h3_test.pbf

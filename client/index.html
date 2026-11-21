@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyderabad | Healthcare Accessibility WebGIS</title>
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <style>
+    :root {
+      --navy: #102b46;
+      --navy-2: #173d5c;
+      --teal: #13a89e;
+      --ink: #1c2d3d;
+      --muted: #65778a;
+      --line: #e1e8ef;
+      --panel: #ffffff;
+      --canvas: #f2f6fa;
+      --green: #21966f;
+      --amber: #e6a23c;
+      --red: #df554e;
+      --shadow: 0 8px 28px rgba(20, 43, 66, .10);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--canvas);
+      overflow: hidden;
+    }
+    .topbar {
+      height: 66px;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: #fff;
+      background: linear-gradient(115deg, var(--navy), var(--navy-2));
+      box-shadow: 0 3px 14px rgba(10, 31, 51, .2);
+      position: relative;
+      z-index: 5;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-mark {
+      width: 38px; height: 38px; border-radius: 12px;
+      display: grid; place-items: center;
+      color: white; font-size: 19px; font-weight: 800;
+      background: linear-gradient(145deg, #21b7a9, #087d91);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
+      flex: 0 0 auto;
+    }
+    .brand h1 { margin: 0; font-size: 17px; letter-spacing: .1px; font-weight: 700; }
+    .brand p { margin: 3px 0 0; color: #c5d7e5; font-size: 11px; }
+    .top-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .top-pill {
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.09);
+      color: #e9f5fb;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    .workspace {
+      height: calc(100% - 66px);
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 0;
+    }
+    .sidebar {
+      padding: 17px 15px 20px;
+      overflow-y: auto;
+      background: #f7f9fc;
+      border-right: 1px solid #dce5ed;
+      z-index: 2;
+    }
+    .intro { padding: 2px 3px 14px; }
+    .eyebrow {
+      color: #168f8c; font-size: 10px; font-weight: 800;
+      letter-spacing: 1.2px; text-transform: uppercase;
+    }
+    .intro h2 { margin: 6px 0 5px; font-size: 19px; color: var(--navy); }
+    .intro p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 14px;
+      margin: 0 0 12px;
+      box-shadow: 0 3px 12px rgba(23, 54, 82, .035);
+    }
+    .panel-heading {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px; margin-bottom: 11px;
+    }
+    .panel h3 { margin: 0; font-size: 12px; color: var(--navy); letter-spacing: .25px; }
+    .step-tag {
+      color: #168f8c; background: #e8f7f5; border-radius: 999px;
+      padding: 4px 7px; font-size: 9px; font-weight: 700;
+    }
+    .layer-row {
+      display: flex; align-items: center; gap: 9px;
+      padding: 8px 0; margin: 0; font-size: 12px; color: #34495d;
+      border-top: 1px solid #f0f3f6; cursor: pointer;
+    }
+    .layer-row:first-of-type { border-top: 0; }
+    input[type="checkbox"] { accent-color: #0d9992; width: 15px; height: 15px; margin: 0; }
+    .layer-symbol { width: 10px; height: 10px; border-radius: 3px; flex: 0 0 auto; }
+    .layer-symbol.dot { border-radius: 50%; }
+    select, button {
+      width: 100%; border-radius: 8px; font: inherit;
+    }
+    select {
+      padding: 10px 11px; border: 1px solid #d7e1e9;
+      background: #fbfdff; color: #263b4e; font-size: 12px;
+      outline: none;
+    }
+    select:focus { border-color: #19a69d; box-shadow: 0 0 0 3px rgba(25,166,157,.12); }
+    .field-label {
+      display: block; font-size: 10px; color: var(--muted);
+      margin: 10px 0 6px; font-weight: 700; text-transform: uppercase; letter-spacing: .55px;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 9px;
+      color: #4d6072; font-size: 11px; margin: 9px 0;
+    }
+    .legend-swatch {
+      width: 15px; height: 15px; border: 1px solid rgba(34,52,69,.18);
+      border-radius: 4px; flex: 0 0 auto;
+    }
+    .legend-swatch.circle { border-radius: 50%; }
+    .status-line { display: flex; align-items: flex-start; gap: 8px; }
+    .status-dot {
+      width: 8px; height: 8px; background: #19a77b; border-radius: 50%;
+      margin-top: 4px; flex: 0 0 auto; box-shadow: 0 0 0 3px #e7f7f1;
+    }
+    #status { margin: 0; color: #53677a; font-size: 11px; line-height: 1.5; overflow-wrap: anywhere; }
+    .zoom-btn {
+      margin-top: 12px; padding: 10px 12px; border: 0;
+      background: linear-gradient(110deg, #087f8c, #12a69a);
+      color: white; font-size: 12px; font-weight: 700;
+      cursor: pointer; box-shadow: 0 5px 12px rgba(10,145,140,.18);
+      transition: transform .15s, box-shadow .15s;
+    }
+    .zoom-btn:hover { transform: translateY(-1px); box-shadow: 0 7px 15px rgba(10,145,140,.24); }
+    .map-wrap { position: relative; min-width: 0; min-height: 0; background: #dce7ec; }
+    #map { position: absolute; inset: 0; }
+    .map-caption {
+      position: absolute; z-index: 1; top: 14px; left: 14px;
+      padding: 9px 12px; border: 1px solid rgba(255,255,255,.75);
+      border-radius: 10px; background: rgba(255,255,255,.93);
+      box-shadow: var(--shadow); pointer-events: none;
+    }
+    .map-caption strong { display: block; color: var(--navy); font-size: 11px; }
+    .map-caption span { display: block; margin-top: 3px; color: #718294; font-size: 10px; }
+    .maplibregl-popup-content {
+      border-radius: 10px; padding: 12px 14px;
+      box-shadow: 0 8px 24px rgba(16,43,70,.18);
+      font: 12px/1.5 "Segoe UI", Arial, sans-serif;
+    }
+    .maplibregl-popup-close-button { padding: 4px 8px; font-size: 16px; }
+    @media(max-width: 760px) {
+      body { overflow: auto; }
+      .topbar { height: auto; min-height: 62px; padding: 10px 13px; }
+      .brand h1 { font-size: 14px; }
+      .top-meta { display: none; }
+      .workspace { height: auto; min-height: calc(100% - 62px); grid-template-columns: 1fr; }
+      .sidebar { order: 2; border-right: 0; border-top: 1px solid var(--line); }
+      .map-wrap { order: 1; height: 58vh; min-height: 360px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">H</div>
+      <div>
+        <h1>Hyderabad Healthcare Accessibility</h1>
+        <p>Geospatial decision-support map · Serilingampally & Hafeezpet</p>
+      </div>
+    </div>
+    <div class="top-meta">
+      <span class="top-pill">POSTGIS</span>
+      <span class="top-pill">GEOSERVER</span>
+      <span class="top-pill">OGC API</span>
+      <span class="top-pill">MAPLIBRE</span>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside class="sidebar">
+      <div class="intro">
+        <div class="eyebrow">Interactive WebGIS</div>
+        <h2>Map controls</h2>
+        <p>Explore healthcare locations and compare walking-access coverage across H3 cells.</p>
+      </div>
+
+      <section class="panel">
+        <div class="panel-heading"><h3>MAP LAYERS</h3><span class="step-tag">01 · DISPLAY</span></div>
+        <label class="layer-row"><input type="checkbox" id="h3Toggle" checked><span class="layer-symbol" style="background:#21966f"></span>H3 accessibility grid</label>
+        <label class="layer-row"><input type="checkbox" id="serviceToggle" checked><span class="layer-symbol dot" style="background:#df554e"></span>Healthcare services</label>
+        <label class="layer-row"><input type="checkbox" id="boundaryToggle" checked><span class="layer-symbol" style="background:#4d8cae"></span>Study area boundary (WMS)</label>
+        <label class="layer-row"><input type="checkbox" id="buildingToggle"><span class="layer-symbol" style="background:#8493a1"></span>Buildings (WFS GeoJSON)</label>
+        <p style="font-size:10px;color:#8392a0;line-height:1.4;margin:7px 0 0 24px">Building features are fetched only when this layer is switched on.</p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><h3>ACCESSIBILITY ANALYSIS</h3><span class="step-tag">02 · COMPARE</span></div>
+        <label class="field-label" for="resolution">H3 grid resolution</label>
+        <select id="resolution">
+          <option value="9" selected>Resolution 9 · finer cells</option>
+          <option value="8">Resolution 8 · larger cells</option>
+        </select>
+        <label class="field-label" for="scenario">Coverage scenario</label>
+        <select id="scenario">
+          <option value="network_covered_4_8">Walking network · 4.8 km/h</option>
+          <option value="network_covered_3_6">Walking network · 3.6 km/h</option>
+          <option value="buffer_covered_4_8">Straight-line buffer · 4.8 km/h</option>
+        </select>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><h3>MAP LEGEND</h3><span class="step-tag">03 · INTERPRET</span></div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#21966f"></span>Covered H3 cell</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#e6a23c"></span>Not covered H3 cell</div>
+        <div class="legend-item"><span class="legend-swatch circle" style="background:#df554e"></span>Healthcare service location</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#8493a1"></span>Building footprint</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#4d8cae"></span>Study area WMS overlay</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><h3>MAP STATUS</h3><span class="step-tag">LIVE</span></div>
+        <div class="status-line">
+          <span class="status-dot"></span>
+          <p id="status">Connecting to map services…</p>
+        </div>
+        <button class="zoom-btn" id="zoomButton" type="button">⌖ &nbsp; Zoom to study area</button>
+      </section>
+    </aside>
+
+    <section class="map-wrap">
+      <div id="map"></div>
+      <div class="map-caption">
+        <strong>Study area · Hyderabad, Telangana</strong>
+        <span>Ward 106 Serilingampally · Ward 109 Hafeezpet</span>
+      </div>
+    </section>
+  </main>
+
+<script>
+  const CENTER = [78.3377, 17.4671];
+  const h3Tiles = 'http://localhost:7800/public.phase3_h3_access/{z}/{x}/{y}.pbf';
+  const serviceUrl = 'http://localhost:9000/collections/public.phase2_services/items?limit=10000';
+  const buildingUrl = 'http://localhost:8085/geoserver/hyderabad/ows?' +
+    'service=WFS&version=2.0.0&request=GetFeature&' +
+    'typeNames=hyderabad:phase2_buildings&outputFormat=application/json';
+  const wmsUrl = 'http://localhost:8085/geoserver/hyderabad/wms?' +
+    'service=WMS&version=1.1.1&request=GetMap&' +
+    'layers=hyderabad:phase2_study_area&styles=&' +
+    'format=image/png&transparent=true&srs=EPSG:3857&' +
+    'width=256&height=256&bbox={bbox-epsg-3857}';
+
+  const statusElement = document.getElementById('status');
+  const setStatus = (message) => { statusElement.textContent = message; };
+
+  const map = new maplibregl.Map({
+    container: 'map',
+    center: CENTER,
+    zoom: 13,
+    style: {
+      version: 8,
+      sources: {
+        osm: {
+          type: 'raster',
+          tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+          tileSize: 256,
+          attribution: '© OpenStreetMap contributors'
+        }
+      },
+      layers: [{ id: 'osm-basemap', type: 'raster', source: 'osm' }]
+    }
+  });
+
+  map.addControl(new maplibregl.NavigationControl(), 'top-right');
+  map.addControl(new maplibregl.ScaleControl(), 'bottom-right');
+
+  let buildingsLoaded = false;
+  let serviceCount = 0;
+
+  function updateH3Style() {
+    if (!map.getLayer('h3-fill')) return;
+    const field = document.getElementById('scenario').value;
+    const resolution = Number(document.getElementById('resolution').value);
+    map.setFilter('h3-fill', ['==', ['get', 'resolution'], resolution]);
+    map.setPaintProperty('h3-fill', 'fill-color', [
+      'case', ['==', ['get', field], true], '#21966f', '#e6a23c'
+    ]);
+  }
+
+  function safeText(value, fallback) {
+    return value === null || value === undefined || value === '' ? fallback : String(value);
+  }
+
+  map.on('load', async () => {
+    // Add WMS first so that the H3 grid is drawn above it rather than hidden underneath.
+    map.addSource('study-wms', { type: 'raster', tiles: [wmsUrl], tileSize: 256 });
+    map.addLayer({
+      id: 'study-boundary',
+      type: 'raster',
+      source: 'study-wms',
+      paint: { 'raster-opacity': 0.25 }
+    });
+
+    map.addSource('h3', {
+      type: 'vector',
+      tiles: [h3Tiles],
+      minzoom: 0,
+      maxzoom: 22
+    });
+    map.addLayer({
+      id: 'h3-fill',
+      type: 'fill',
+      source: 'h3',
+      'source-layer': 'public.phase3_h3_access',
+      paint: {
+        'fill-color': [
+          'case', ['==', ['get', 'network_covered_4_8'], true], '#21966f', '#e6a23c'
+        ],
+        'fill-opacity': 0.58,
+        'fill-outline-color': '#ffffff'
+      }
+    });
+    updateH3Style();
+
+    try {
+      const response = await fetch(serviceUrl);
+      if (!response.ok) throw new Error('Healthcare API HTTP ' + response.status);
+      const serviceData = await response.json();
+      serviceCount = Array.isArray(serviceData.features) ? serviceData.features.length : 0;
+
+      map.addSource('services', { type: 'geojson', data: serviceData });
+      map.addLayer({
+        id: 'services-points',
+        type: 'circle',
+        source: 'services',
+        paint: {
+          'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 3.5, 15, 7],
+          'circle-color': '#df554e',
+          'circle-stroke-color': '#ffffff',
+          'circle-stroke-width': 1.7
+        }
+      });
+
+      map.on('click', 'services-points', (event) => {
+        const p = event.features[0].properties || {};
+        const content = document.createElement('div');
+        const title = document.createElement('strong');
+        title.textContent = safeText(p.name, 'Healthcare service');
+        const category = document.createElement('div');
+        category.textContent = 'Category: ' + safeText(p.category, 'Not available');
+        content.append(title, category);
+        new maplibregl.Popup({ offset: 10 })
+          .setLngLat(event.lngLat)
+          .setDOMContent(content)
+          .addTo(map);
+      });
+      map.on('mouseenter', 'services-points', () => { map.getCanvas().style.cursor = 'pointer'; });
+      map.on('mouseleave', 'services-points', () => { map.getCanvas().style.cursor = ''; });
+    } catch (error) {
+      console.error('Healthcare API error:', error);
+      setStatus('Healthcare API error: ' + error.message);
+    }
+
+    async function loadBuildings() {
+      if (buildingsLoaded) return;
+      const response = await fetch(buildingUrl);
+      if (!response.ok) throw new Error('Building WFS HTTP ' + response.status);
+      const data = await response.json();
+      if (!data || !Array.isArray(data.features)) {
+        throw new Error('WFS response did not contain a GeoJSON features array.');
+      }
+      map.addSource('buildings', { type: 'geojson', data });
+      map.addLayer({
+        id: 'building-polygons',
+        type: 'fill',
+        source: 'buildings',
+        paint: {
+          'fill-color': '#8493a1',
+          'fill-opacity': 0.25,
+          'fill-outline-color': '#536575'
+        }
+      }, map.getLayer('h3-fill') ? 'h3-fill' : undefined);
+      buildingsLoaded = true;
+    }
+
+    document.getElementById('h3Toggle').addEventListener('change', (e) => {
+      map.setLayoutProperty('h3-fill', 'visibility', e.target.checked ? 'visible' : 'none');
+    });
+    document.getElementById('serviceToggle').addEventListener('change', (e) => {
+      if (map.getLayer('services-points')) {
+        map.setLayoutProperty('services-points', 'visibility', e.target.checked ? 'visible' : 'none');
+      }
+    });
+    document.getElementById('boundaryToggle').addEventListener('change', (e) => {
+      map.setLayoutProperty('study-boundary', 'visibility', e.target.checked ? 'visible' : 'none');
+    });
+    document.getElementById('buildingToggle').addEventListener('change', async (e) => {
+      const checkbox = e.target;
+      try {
+        if (checkbox.checked) {
+          checkbox.disabled = true;
+          setStatus('Loading building footprints from GeoServer WFS…');
+          await loadBuildings();
+          map.setLayoutProperty('building-polygons', 'visibility', 'visible');
+          setStatus('Healthcare features: ' + serviceCount + '. Buildings loaded.');
+        } else if (map.getLayer('building-polygons')) {
+          map.setLayoutProperty('building-polygons', 'visibility', 'none');
+          setStatus('Healthcare features: ' + serviceCount + '. Buildings hidden.');
+        }
+      } catch (error) {
+        checkbox.checked = false;
+        console.error('Building WFS error:', error);
+        alert('Could not load buildings: ' + error.message);
+        setStatus('Building layer error: ' + error.message);
+      } finally {
+        checkbox.disabled = false;
+      }
+    });
+
+    document.getElementById('scenario').addEventListener('change', updateH3Style);
+    document.getElementById('resolution').addEventListener('change', updateH3Style);
+    document.getElementById('zoomButton').addEventListener('click', () => {
+      map.flyTo({ center: CENTER, zoom: 13, essential: true });
+    });
+
+    setStatus('Connected · ' + serviceCount + ' healthcare features. H3 tiles and study-area WMS enabled.');
+  });
+
+  map.on('error', (event) => {
+    console.warn('Map service/rendering message:', event.error || event);
+  });
+</script>
+</body>
+</html>

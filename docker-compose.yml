@@ -1,0 +1,64 @@
+
+services:
+  postgis:
+    image: postgis/postgis:16-3.7
+    container_name: webgis-postgis
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  geoserver:
+    image: docker.osgeo.org/geoserver:2.28.2
+    container_name: webgis-geoserver
+    restart: unless-stopped
+    depends_on:
+      postgis:
+        condition: service_healthy
+    environment:
+      SKIP_DEMO_DATA: "false"
+      CORS_ENABLED: "true"
+      CORS_ALLOWED_ORIGINS: "*"
+      EXTRA_JAVA_OPTS: "-Xms256m -Xmx1g"
+    ports:
+      - "8085:8080"
+    volumes:
+      - geoserver_data:/opt/geoserver_data
+
+  pg_tileserv:
+    image: pramsey/pg_tileserv:latest
+    container_name: webgis-pg-tileserv
+    restart: unless-stopped
+    depends_on:
+      postgis:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgis:5432/${POSTGRES_DB}
+    ports:
+      - "7800:7800"
+
+  pg_featureserv:
+    image: pramsey/pg_featureserv:latest
+    container_name: webgis-pg-featureserv
+    restart: unless-stopped
+    depends_on:
+      postgis:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgis:5432/${POSTGRES_DB}
+    ports:
+      - "9000:9000"
+
+volumes:
+  postgis_data:
+  geoserver_data:

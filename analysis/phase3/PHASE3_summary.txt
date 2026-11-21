@@ -1,0 +1,34 @@
+PHASE 3 ACCESSIBILITY ANALYSIS
+================================
+Study area: Hyderabad Ward 106 and Ward 109
+UTM CRS: EPSG:32644
+Healthcare services inside study area: 70
+Walking graph nodes: 12598
+Walking graph edges: 16220
+
+Q6 - RANDOM POINT COMPARISON
+Random points: 30
+Different nearest service count: 14
+Median network/straight-line ratio: 1.896
+Maximum network/straight-line ratio: 6.777
+
+POPULATION PROXY
+WorldPop raster was not available in the project data folder.
+Building footprint area (m2) is used as a proxy, not population.
+
+Q7/Q8 - H3 COVERAGE SUMMARIES
+Resolution 8: cells=18, network coverage 4.8 km/h=65.34%, straight buffer coverage=92.61%, network coverage 3.6 km/h=59.98%, coverage loss=5.36 percentage points
+Resolution 9: cells=145, network coverage 4.8 km/h=75.12%, straight buffer coverage=92.76%, network coverage 3.6 km/h=72.38%, coverage loss=2.74 percentage points
+
+Worst-served populated H3 resolution-9 cell:
+H3 index: 8960a24a217ffff
+Network distance (m): 3249.254
+Building footprint area (m2): 8571.32
+
+METHOD LIMITATIONS
+- Isochrones are convex hulls of reachable OSM road nodes.
+- They are approximate polygons, not exact travel-time surfaces.
+- H3 cell-centre distances represent each cell.
+- Building footprint area is a population proxy, not census population.
+- Ward assignment uses the H3 cell centre.
+- Walking graph is treated as undirected.

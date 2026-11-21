@@ -1,0 +1,3 @@
+﻿resolution,cell_count,total_building_area_m2,network_covered_4_8_pct,network_beyond_1200m_pct,buffer_covered_4_8_pct,buffer_beyond_1200m_pct,network_covered_3_6_pct,network_beyond_900m_pct,coverage_loss_percentage_points
+8,18,1699630.58,65.34,34.66,92.61,7.39,59.98,40.02,5.36
+9,145,2284680.93,75.12,24.88,92.76,7.24,72.38,27.62,2.74

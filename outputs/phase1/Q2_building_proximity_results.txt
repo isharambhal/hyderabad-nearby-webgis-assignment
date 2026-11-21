@@ -1,0 +1,126 @@
+PHASE 1 - QUESTION 2
+Building proximity and spatial index experiment
+Distance method: geography, metres
+Threshold: 500 metres
+phase1_healthcare: 187 features
+phase1_buildings: 44,786 features
+Benchmark healthcare feature_id: 1
+
+=================================================================
+A. ST_DWithin BEFORE geography GiST index
+=================================================================
+Finalize Aggregate  (cost=243460.06..243460.07 rows=1 width=8) (actual time=649.009..672.833 rows=1.00 loops=1)
+  Output: count(*)
+  Buffers: shared hit=9774
+  InitPlan 1
+    ->  Index Scan using phase1_healthcare_pkey on public.phase1_healthcare h  (cost=0.14..8.16 rows=1 width=32) (actual time=7.304..7.320 rows=1.00 loops=1)
+          Output: (h.geom)::geography
+          Index Cond: (h.feature_id = 1)
+          Index Searches: 1
+          Buffers: shared hit=5
+  ->  Gather  (cost=243451.68..243451.89 rows=2 width=8) (actual time=648.205..672.800 rows=3.00 loops=1)
+        Output: (PARTIAL count(*))
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=9774
+        ->  Partial Aggregate  (cost=242451.68..242451.69 rows=1 width=8) (actual time=555.131..555.135 rows=1.00 loops=3)
+              Output: PARTIAL count(*)
+              Buffers: shared hit=9769
+              Worker 0:  actual time=517.589..517.596 rows=1.00 loops=1
+                Buffers: shared hit=3410
+              Worker 1:  actual time=517.676..517.677 rows=1.00 loops=1
+                Buffers: shared hit=3253
+              ->  Parallel Seq Scan on public.phase1_buildings b  (cost=0.00..242451.68 rows=2 width=0) (actual time=184.081..555.016 rows=192.00 loops=3)
+                    Output: b.feature_id, b.osm_id, b.name, b.category, b.properties, b.geom
+                    Filter: st_dwithin((b.geom)::geography, (InitPlan 1).col1, '500'::double precision, true)
+                    Rows Removed by Filter: 14737
+                    Buffers: shared hit=9769
+                    Worker 0:  actual time=133.178..517.473 rows=164.00 loops=1
+                      Buffers: shared hit=3410
+                    Worker 1:  actual time=168.810..517.578 rows=203.00 loops=1
+                      Buffers: shared hit=3253
+Planning:
+  Buffers: shared hit=66
+Planning Time: 11.784 ms
+Execution Time: 675.985 ms
+
+Creating geography GiST expression index...
+
+=================================================================
+B. ST_DWithin AFTER geography GiST index
+=================================================================
+Aggregate  (cost=78.66..78.67 rows=1 width=8) (actual time=20.142..20.145 rows=1.00 loops=1)
+  Output: count(*)
+  Buffers: shared hit=561
+  InitPlan 1
+    ->  Index Scan using phase1_healthcare_pkey on public.phase1_healthcare h  (cost=0.14..8.16 rows=1 width=32) (actual time=0.019..0.021 rows=1.00 loops=1)
+          Output: (h.geom)::geography
+          Index Cond: (h.feature_id = 1)
+          Index Searches: 1
+          Buffers: shared hit=2
+  ->  Index Scan using phase1_buildings_geog_gix on public.phase1_buildings b  (cost=0.40..70.48 rows=4 width=0) (actual time=0.689..20.005 rows=576.00 loops=1)
+        Output: b.feature_id, b.osm_id, b.name, b.category, b.properties, b.geom
+        Index Cond: ((b.geom)::geography && _st_expand((InitPlan 1).col1, '500'::double precision))
+        Filter: st_dwithin((b.geom)::geography, (InitPlan 1).col1, '500'::double precision, true)
+        Rows Removed by Filter: 160
+        Index Searches: 1
+        Buffers: shared hit=561
+Planning:
+  Buffers: shared hit=39 read=3
+Planning Time: 7.508 ms
+Execution Time: 21.427 ms
+
+=================================================================
+C. ST_Distance < 500 AFTER geography GiST index
+=================================================================
+Finalize Aggregate  (cost=243522.26..243522.27 rows=1 width=8) (actual time=524.874..537.187 rows=1.00 loops=1)
+  Output: count(*)
+  Buffers: shared hit=9694
+  InitPlan 1
+    ->  Index Scan using phase1_healthcare_pkey on public.phase1_healthcare h  (cost=0.14..8.16 rows=1 width=32) (actual time=0.072..0.074 rows=1.00 loops=1)
+          Output: (h.geom)::geography
+          Index Cond: (h.feature_id = 1)
+          Index Searches: 1
+          Buffers: shared hit=2
+  ->  Gather  (cost=243513.88..243514.09 rows=2 width=8) (actual time=524.353..537.173 rows=3.00 loops=1)
+        Output: (PARTIAL count(*))
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=9694
+        ->  Partial Aggregate  (cost=242513.88..242513.89 rows=1 width=8) (actual time=418.200..418.201 rows=1.00 loops=3)
+              Output: PARTIAL count(*)
+              Buffers: shared hit=9692
+              Worker 0:  actual time=361.483..361.484 rows=1.00 loops=1
+                Buffers: shared hit=2979
+              Worker 1:  actual time=372.335..372.335 rows=1.00 loops=1
+                Buffers: shared hit=3006
+              ->  Parallel Seq Scan on public.phase1_buildings b  (cost=0.00..242498.33 rows=6220 width=0) (actual time=121.947..418.140 rows=192.00 loops=3)
+                    Output: b.feature_id, b.osm_id, b.name, b.category, b.properties, b.geom
+                    Filter: (st_distance((b.geom)::geography, (InitPlan 1).col1, true) < '500'::double precision)
+                    Rows Removed by Filter: 14737
+                    Buffers: shared hit=9692
+                    Worker 0:  actual time=170.519..361.434 rows=179.00 loops=1
+                      Buffers: shared hit=2979
+                    Worker 1:  actual time=182.991..372.293 rows=172.00 loops=1
+                      Buffers: shared hit=3006
+Planning Time: 1.126 ms
+Execution Time: 537.737 ms
+
+SAMPLE FEATURE RESULT
+ST_DWithin count: 576
+ST_Distance count: 576
+Counts agree: True
+
+Calculating counts for all healthcare features...
+
+ALL HEALTHCARE FEATURES SUMMARY
+Healthcare features analysed: 187
+Minimum buildings within 500 m: 60
+Maximum buildings within 500 m: 2,303
+Average buildings within 500 m: 925.95
+Sum of per-service counts: 173,153
+
+Q2 ANALYSIS COMPLETED
+CSV evidence: C:\hyderabad-nearby-webgis\outputs\phase1\Q2_building_counts_500m.csv
+Text report: C:\hyderabad-nearby-webgis\outputs\phase1\Q2_building_proximity_results.txt
+Derived table: phase1_healthcare_building_counts_500m

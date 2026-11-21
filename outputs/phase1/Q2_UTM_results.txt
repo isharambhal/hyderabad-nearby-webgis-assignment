@@ -1,0 +1,163 @@
+Q2: UTM GEOMETRY SPATIAL INDEX EXPERIMENT
+CRS: EPSG:32644
+Distance threshold: 500 metres
+Healthcare features: 187
+Building features: 44,786
+
+=================================================================
+A. ST_DWithin BEFORE UTM GiST index
+=================================================================
+Finalize Aggregate  (cost=721836.92..721836.93 rows=1 width=8) (actual time=760.395..795.757 rows=1.00 loops=1)
+  Output: count(*)
+  Buffers: shared hit=9791
+  ->  Gather  (cost=721836.71..721836.92 rows=2 width=8) (actual time=755.713..795.720 rows=3.00 loops=1)
+        Output: (PARTIAL count(*))
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=9791
+        ->  Partial Aggregate  (cost=720836.71..720836.72 rows=1 width=8) (actual time=617.314..617.316 rows=1.00 loops=3)
+              Output: PARTIAL count(*)
+              Buffers: shared hit=9791
+              Worker 0:  actual time=559.612..559.614 rows=1.00 loops=1
+                Buffers: shared hit=3097
+              Worker 1:  actual time=549.883..549.885 rows=1.00 loops=1
+                Buffers: shared hit=3300
+              ->  Nested Loop  (cost=0.14..720836.66 rows=19 width=0) (actual time=149.844..617.133 rows=192.00 loops=3)
+                    Inner Unique: true
+                    Join Filter: st_dwithin(st_transform(b.geom, 32644), st_transform(st_pointonsurface(phase1_healthcare.geom), 32644), '500'::double precision)
+                    Rows Removed by Join Filter: 14737
+                    Buffers: shared hit=9791
+                    Worker 0:  actual time=90.109..559.530 rows=84.00 loops=1
+                      Buffers: shared hit=3097
+                    Worker 1:  actual time=84.561..549.694 rows=216.00 loops=1
+                      Buffers: shared hit=3300
+                    ->  Parallel Seq Scan on public.phase1_buildings b  (cost=0.00..9144.61 rows=18661 width=130) (actual time=0.059..36.919 rows=14928.67 loops=3)
+                          Output: b.feature_id, b.osm_id, b.name, b.category, b.properties, b.geom
+                          Buffers: shared hit=8958
+                          Worker 0:  actual time=0.020..36.902 rows=13630.00 loops=1
+                            Buffers: shared hit=2724
+                          Worker 1:  actual time=0.018..54.814 rows=14634.00 loops=1
+                            Buffers: shared hit=2927
+                    ->  Materialize  (cost=0.14..8.17 rows=1 width=60) (actual time=0.000..0.000 rows=1.00 loops=44786)
+                          Output: phase1_healthcare.geom
+                          Storage: Memory  Maximum Storage: 17kB
+                          Buffers: shared hit=17
+                          Worker 0:  actual time=0.000..0.001 rows=1.00 loops=13630
+                            Buffers: shared hit=6
+                          Worker 1:  actual time=0.000..0.001 rows=1.00 loops=14634
+                            Buffers: shared hit=6
+                          ->  Index Scan using phase1_healthcare_pkey on public.phase1_healthcare  (cost=0.14..8.16 rows=1 width=60) (actual time=0.284..0.290 rows=1.00 loops=3)
+                                Output: phase1_healthcare.geom
+                                Index Cond: (phase1_healthcare.feature_id = 1)
+                                Index Searches: 3
+                                Buffers: shared hit=17
+                                Worker 0:  actual time=0.089..0.095 rows=1.00 loops=1
+                                  Buffers: shared hit=6
+                                Worker 1:  actual time=0.090..0.097 rows=1.00 loops=1
+                                  Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=111
+Planning Time: 11.246 ms
+Execution Time: 801.336 ms
+
+Creating UTM functional GiST index...
+
+=================================================================
+B. ST_DWithin AFTER UTM GiST index
+=================================================================
+Aggregate  (cost=194.41..194.42 rows=1 width=8) (actual time=19.275..19.277 rows=1.00 loops=1)
+  Output: count(*)
+  Buffers: shared hit=665 read=9
+  ->  Nested Loop  (cost=13.67..194.30 rows=45 width=0) (actual time=3.250..18.923 rows=576.00 loops=1)
+        Buffers: shared hit=665 read=9
+        ->  Index Scan using phase1_healthcare_pkey on public.phase1_healthcare  (cost=0.14..8.16 rows=1 width=60) (actual time=0.013..0.017 rows=1.00 loops=1)
+              Output: phase1_healthcare.feature_id, phase1_healthcare.osm_id, phase1_healthcare.name, phase1_healthcare.category, phase1_healthcare.properties, phase1_healthcare.geom
+              Index Cond: (phase1_healthcare.feature_id = 1)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using phase1_buildings_utm44n_gix on public.phase1_buildings b  (cost=13.53..186.10 rows=4 width=130) (actual time=1.491..16.764 rows=576.00 loops=1)
+              Output: b.feature_id, b.osm_id, b.name, b.category, b.properties, b.geom
+              Index Cond: (st_transform(b.geom, 32644) && st_expand(st_transform(st_pointonsurface(phase1_healthcare.geom), 32644), '500'::double precision))
+              Filter: st_dwithin(st_transform(b.geom, 32644), st_transform(st_pointonsurface(phase1_healthcare.geom), 32644), '500'::double precision)
+              Rows Removed by Filter: 110
+              Index Searches: 1
+              Buffers: shared hit=663 read=9
+Planning:
+  Buffers: shared hit=56
+Planning Time: 6.525 ms
+Execution Time: 22.990 ms
+
+=================================================================
+C. ST_Distance < 500 WITH UTM GiST index present
+=================================================================
+Finalize Aggregate  (cost=721899.08..721899.09 rows=1 width=8) (actual time=466.525..490.257 rows=1.00 loops=1)
+  Output: count(*)
+  Buffers: shared hit=9706
+  ->  Gather  (cost=721898.86..721899.07 rows=2 width=8) (actual time=466.117..490.243 rows=3.00 loops=1)
+        Output: (PARTIAL count(*))
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=9706
+        ->  Partial Aggregate  (cost=720898.86..720898.87 rows=1 width=8) (actual time=341.209..341.211 rows=1.00 loops=3)
+              Output: PARTIAL count(*)
+              Buffers: shared hit=9706
+              Worker 0:  actual time=292.038..292.040 rows=1.00 loops=1
+                Buffers: shared hit=2649
+              Worker 1:  actual time=266.152..266.153 rows=1.00 loops=1
+                Buffers: shared hit=2293
+              ->  Nested Loop  (cost=0.14..720883.31 rows=6220 width=0) (actual time=79.029..341.048 rows=192.00 loops=3)
+                    Inner Unique: true
+                    Join Filter: (st_distance(st_transform(b.geom, 32644), st_transform(st_pointonsurface(phase1_healthcare.geom), 32644)) < '500'::double precision)
+                    Rows Removed by Join Filter: 14737
+                    Buffers: shared hit=9706
+                    Worker 0:  actual time=124.496..291.957 rows=128.00 loops=1
+                      Buffers: shared hit=2649
+                    Worker 1:  actual time=107.895..266.033 rows=207.00 loops=1
+                      Buffers: shared hit=2293
+                    ->  Parallel Seq Scan on public.phase1_buildings b  (cost=0.00..9144.61 rows=18661 width=130) (actual time=0.028..21.149 rows=14928.67 loops=3)
+                          Output: b.feature_id, b.osm_id, b.name, b.category, b.properties, b.geom
+                          Buffers: shared hit=8958
+                          Worker 0:  actual time=0.039..22.501 rows=11380.00 loops=1
+                            Buffers: shared hit=2276
+                          Worker 1:  actual time=0.033..14.437 rows=9596.00 loops=1
+                            Buffers: shared hit=1920
+                    ->  Materialize  (cost=0.14..8.17 rows=1 width=60) (actual time=0.000..0.000 rows=1.00 loops=44786)
+                          Output: phase1_healthcare.geom
+                          Storage: Memory  Maximum Storage: 17kB
+                          Buffers: shared hit=14
+                          Worker 0:  actual time=0.000..0.000 rows=1.00 loops=11380
+                            Buffers: shared hit=6
+                          Worker 1:  actual time=0.000..0.000 rows=1.00 loops=9596
+                            Buffers: shared hit=6
+                          ->  Index Scan using phase1_healthcare_pkey on public.phase1_healthcare  (cost=0.14..8.16 rows=1 width=60) (actual time=0.079..0.089 rows=1.00 loops=3)
+                                Output: phase1_healthcare.geom
+                                Index Cond: (phase1_healthcare.feature_id = 1)
+                                Index Searches: 3
+                                Buffers: shared hit=14
+                                Worker 0:  actual time=0.093..0.105 rows=1.00 loops=1
+                                  Buffers: shared hit=6
+                                Worker 1:  actual time=0.100..0.110 rows=1.00 loops=1
+                                  Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=55
+Planning Time: 0.597 ms
+Execution Time: 490.924 ms
+
+SAMPLE FEATURE COMPARISON
+Healthcare feature_id: 1
+ST_DWithin count: 576
+ST_Distance count: 576
+Counts agree: True
+
+Calculating building counts for every healthcare feature...
+
+ALL-SERVICE SUMMARY
+Healthcare features analysed: 187
+Minimum buildings: 60
+Maximum buildings: 2,302
+Average buildings: 918.68
+Sum of per-service counts: 171,794
+
+Q2 UTM ANALYSIS COMPLETED
+Report: C:\hyderabad-nearby-webgis\outputs\phase1\Q2_UTM_results.txt
+CSV: C:\hyderabad-nearby-webgis\outputs\phase1\Q2_UTM_building_counts_500m.csv

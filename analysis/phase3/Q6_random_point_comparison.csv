@@ -1,0 +1,31 @@
+﻿sample_no,x_utm,y_utm,straight_service_id,straight_service_name,straight_distance_m,network_service_id,network_service_name,network_distance_m,network_to_straight_ratio,nearest_service_different
+1,218430.555,1933878.908,147,Kinige Digital Technologies pvt ltd near Hospital,1194.74,170,True White Dental,1774.281,1.485,True
+2,216903.74,1935480.079,159,"Vemana Colony, Chandanagar (Basthi Dawakhana)",458.25,159,"Vemana Colony, Chandanagar (Basthi Dawakhana)",532.509,1.162,False
+3,218156.896,1934605.946,147,Kinige Digital Technologies pvt ltd near Hospital,459.72,106,Srikara Medical Store,1876.196,4.081,True
+4,216265.345,1935153.195,160,Papireddy Nagar at Kukatpally (Basti Dawakhana),97.9,160,Papireddy Nagar at Kukatpally (Basti Dawakhana),162.475,1.66,False
+5,219642.543,1931058.4,164,Pi Health Hospital,21.88,164,Pi Health Hospital,97.136,4.439,False
+6,216587.376,1934418.399,159,"Vemana Colony, Chandanagar (Basthi Dawakhana)",651.95,184,Lakshmi hospital,2306.972,3.539,True
+7,218927.112,1930883.529,48,Apollo Pharmacy,437.46,48,Apollo Pharmacy,668.364,1.528,False
+8,216818.275,1935356.058,159,"Vemana Colony, Chandanagar (Basthi Dawakhana)",324.22,159,"Vemana Colony, Chandanagar (Basthi Dawakhana)",500.92,1.545,False
+9,219186.695,1931416.634,48,Apollo Pharmacy,282.37,48,Apollo Pharmacy,427.688,1.515,False
+10,216107.38,1934626.739,154,Nehru Nagar (Basti Dawakhana),432.8,154,Nehru Nagar (Basti Dawakhana),591.283,1.366,False
+11,217844.247,1935477.061,147,Kinige Digital Technologies pvt ltd near Hospital,575.72,106,Srikara Medical Store,1161.216,2.017,True
+12,217142.584,1935900.495,184,Lakshmi hospital,143.93,184,Lakshmi hospital,255.359,1.774,False
+13,217631.26,1934577.777,147,Kinige Digital Technologies pvt ltd near Hospital,774.91,184,Lakshmi hospital,2064.102,2.664,True
+14,219956.251,1931421.132,135,"Praba's VCare Health Clinic (P) Ltd, Gachibowli",78.76,135,"Praba's VCare Health Clinic (P) Ltd, Gachibowli",489.086,6.21,False
+15,217200.485,1934991.925,159,"Vemana Colony, Chandanagar (Basthi Dawakhana)",394.88,184,Lakshmi hospital,1242.339,3.146,True
+16,217124.715,1934394.464,159,"Vemana Colony, Chandanagar (Basthi Dawakhana)",712.04,184,Lakshmi hospital,2100.035,2.949,True
+17,219260.862,1930985.461,48,Apollo Pharmacy,163.66,48,Apollo Pharmacy,344.027,2.102,False
+18,217884.675,1933297.206,170,True White Dental,1153.6,170,True White Dental,1832.376,1.588,False
+19,216796.651,1934227.233,159,"Vemana Colony, Chandanagar (Basthi Dawakhana)",804.86,184,Lakshmi hospital,1968.6,2.446,True
+20,216928.872,1934885.586,159,"Vemana Colony, Chandanagar (Basthi Dawakhana)",190.1,184,Lakshmi hospital,1288.397,6.777,True
+21,216149.776,1933857.997,26,Vaidehi Medical Hall,954.76,143,"Gopanpally, Serilingampally (Basthi Dawakhana)",1101.526,1.154,True
+22,216189.386,1933962.849,143,"Gopanpally, Serilingampally (Basthi Dawakhana)",916.39,143,"Gopanpally, Serilingampally (Basthi Dawakhana)",1124.368,1.227,False
+23,217307.981,1934815.465,159,"Vemana Colony, Chandanagar (Basthi Dawakhana)",545.19,184,Lakshmi hospital,1474.279,2.704,True
+24,219308.752,1932098.365,170,True White Dental,710.18,170,True White Dental,1029.845,1.45,False
+25,217912.008,1933809.827,147,Kinige Digital Technologies pvt ltd near Hospital,1290.58,170,True White Dental,2225.87,1.725,True
+26,217531.296,1935618.66,184,Lakshmi hospital,337.62,184,Lakshmi hospital,462.455,1.37,False
+27,215297.661,1935067.463,41,Nakshatra Medical & General Stores,164.84,41,Nakshatra Medical & General Stores,260.948,1.583,False
+28,219732.272,1935083.077,156,Primary Urban Health Centre  Hafeezpet (Urban),79.26,156,Primary Urban Health Centre  Hafeezpet (Urban),183.202,2.311,False
+29,219406.548,1931507.942,48,Apollo Pharmacy,382.7,170,True White Dental,1868.584,4.883,True
+30,217168.716,1934317.657,159,"Vemana Colony, Chandanagar (Basthi Dawakhana)",800.43,184,Lakshmi hospital,2041.002,2.55,True
