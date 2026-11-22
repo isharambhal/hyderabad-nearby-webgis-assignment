@@ -1,0 +1,26 @@
+Q11 - Kubernetes Storage Persistence Test
+Date: 2026-11-22 19:29:12
+
+1. Kubernetes pods and PVC status:
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/postgis-0                           1/1     Running   0          4m40s
+pod/postgis-emptydir-5c96799845-cjdnp   1/1     Running   0          114s
+pod/webgis-client-f44c8dd77-h8xkd       1/1     Running   0          20h
+
+NAME                                     STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+persistentvolumeclaim/pgdata-postgis-0   Bound    pvc-21d3500c-362b-4f83-a4e1-24be961635d7   1Gi        RWO            standard       <unset>                 21h
+
+2. StatefulSet PVC persistence verification:
+ id |                      test_message
+----+---------------------------------------------------------
+  1 | PVC persistence test - data should survive pod deletion
+(1 row)
+
+
+3. emptyDir data-loss verification (expected: relation does not exist):
+ERROR:  relation "q11_emptydir_test" does not exist
+LINE 1: SELECT * FROM q11_emptydir_test;
+                      ^
+command terminated with exit code 1
+
+Conclusion: PVC data survived StatefulSet pod replacement. The emptyDir test table was lost after Deployment pod replacement.

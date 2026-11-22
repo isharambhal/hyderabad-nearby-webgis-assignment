@@ -653,7 +653,7 @@ The size difference was negligible because this application is a small static we
 **Comparison limitation:** Both tested images used `nginx:alpine` as the base image. Therefore, this experiment compares single-stage and multi-stage builds using the same Alpine base, rather than the assignment's requested full-base single-stage versus slim/Alpine multi-stage comparison.
 ## Q11. Kubernetes Self-Healing and Persistent Storage
 
-A two-node Kubernetes cluster was created through Docker Desktop Kubernetes. PostGIS 16 with PostGIS 3.7 was deployed using a StatefulSet in the `webgis-k8s` namespace.
+A two-node Kubernetes cluster was created through Docker Desktop Kubernetes. PostGIS 16 with PostGIS 3.7 was deployed using a StatefulSet in the `webgis-k8s` namespace. The cluster used Docker Desktop Kubernetes rather than kind or minikube.
 
 Configuration:
 - Database: `webgis_k8s`
@@ -664,18 +664,28 @@ Configuration:
 - Access mode: ReadWriteOnce
 - Credentials: Kubernetes Secret `postgres-secret`
 
-A test table named `persistence_test` was created and a record was inserted before deleting the PostGIS pod. Kubernetes recreated the pod in approximately **18.5 seconds**. After recovery, the original record was still present.
+**StatefulSet and PVC persistence test:**
 
-A separate PostgreSQL Deployment using `emptyDir` storage was also tested. A record was inserted, the pod was deleted, and the Deployment created a replacement pod. The query returned `relation "emptydir_test" does not exist`, confirming that the original data was lost.
+A test table named `q11_persistence_test` was created in the StatefulSet database and a record was inserted. The `postgis-0` pod was deleted. Kubernetes recreated the pod, and the PVC remained Bound. After the replacement pod became Ready, querying `q11_persistence_test` returned the original record.
 
-Conclusion: PVC storage retained database data after pod recreation, whereas emptyDir did not retain the database data after the pod was replaced.
+This confirms that the database data persisted across pod deletion and recreation because it was stored on the PersistentVolumeClaim.
+
+**Deployment and emptyDir data-loss test:**
+
+A separate PostgreSQL Deployment using `emptyDir` storage was tested. A table named `q11_emptydir_test` was created and a record was inserted. The `emptyDir` pod was deleted, and the Deployment created a replacement pod. After the replacement became Ready, querying the test table returned `relation "q11_emptydir_test" does not exist`.
+
+This confirms that the temporary `emptyDir` volume did not retain the database data after pod replacement.
+
+**Conclusion:** PVC-backed storage retained the test record after StatefulSet pod recreation, whereas `emptyDir` storage lost the test table after Deployment pod replacement. This demonstrates why persistent volumes are appropriate for database workloads and `emptyDir` is intended for temporary data.
 
 The WebGIS client was also deployed using an Nginx Deployment, a ConfigMap and a ClusterIP Service. The dashboard was accessed locally through port-forwarding at `http://localhost:8087`.
 
-Observed PostGIS pod recovery time: **18.5 seconds**.
-
+Observed PostGIS pod recovery time in the earlier stopwatch trial: approximately **18.5 seconds**. This persistence test did not independently measure recovery time.
 
 **Timing evidence note:** The 18.5-second recovery time was measured with a PowerShell stopwatch while polling pod readiness. Separate timestamps from `kubectl get pods -w` were not captured.
+
+**Additional evidence:** `evidence/phase5/Q11_persistence_test.txt` contains the pod/PVC status and the results of both persistence checks.
+
 ## Q12. PMTiles and HTTP Range Request Performance
 
 The H3 accessibility GeoJSON was converted into a PMTiles vector tile archive using Tippecanoe 2.80.0.
@@ -699,3 +709,17 @@ The archive was generated successfully and published through GitHub Pages. HTTP 
 The request transferred approximately 20.17% of the archive rather than its entire contents. This demonstrates that GitHub Pages supports partial byte-range delivery for the PMTiles archive.
 
 Compared with Q9, the PMTiles archive is approximately 79.3 KiB, while the earlier WFS response was approximately 1,025 KB. These represent different delivery methods and data scopes, so the comparison is indicative rather than a direct like-for-like benchmark.
+
+**Additional combined PMTiles archive:**
+
+A second PMTiles archive was generated using Tippecanoe 2.80.0 through Docker. It combines the H3 accessibility polygons and healthcare service points in two separate named layers.
+
+- H3 input: `analysis/phase3/phase3_h3_access_res8_res9.geojson` (163 polygons)
+- Healthcare input: `data/study_area/healthcare_osm.geojson` (70 points)
+- Total features: 233
+- Vector tile layers: `h3_access` and `healthcare_services`
+- Zoom range: 0-14
+- Output: `client/tiles/hyderabad_h3_services.pmtiles`
+- Archive size: 98,552 bytes
+
+The original `h3_access.pmtiles` archive was preserved. The combined archive is an additional static-delivery artifact; the existing live MapLibre client continues to use pg_tileserv and pg_featureserv for its operational layers. The combined archive's public HTTP Range behavior will be verified after deployment.
