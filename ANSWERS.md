@@ -420,7 +420,7 @@ The first GeoJSON point had coordinates:
 
 GeoJSON uses longitude-latitude order.
 
-For GML 3.2, the coordinate order should be read from the first geometry in the saved XML response. For EPSG:4326 using the EPSG axis definition, the expected order is latitude-longitude. Confirm the first coordinate directly from the XML before submitting this value.
+The first GML 3.2 coordinate in the saved XML is `17.493487 78.332069` with srsName `urn:ogc:def:crs:EPSG::4326`. This is latitude-longitude order under the EPSG:4326 axis definition and represents the same location as the first GeoJSON coordinate `[78.332069, 17.493487]`, which uses longitude-latitude order.
 
 ### 5.6 Interpretation
 
