@@ -1,0 +1,29 @@
+Q12 - Combined PMTiles Public HTTP Range Verification
+Date: 2026-11-22
+
+Public archive:
+https://isharambhal.github.io/hyderabad-nearby-webgis-assignment/tiles/hyderabad_h3_services.pmtiles
+
+Full archive request:
+Command: curl.exe -I [public archive URL]
+Observed:
+HTTP/1.1 200 OK
+Content-Length: 98552
+Accept-Ranges: bytes
+
+Partial byte-range request:
+Command:
+curl.exe -sS -D - -o NUL -H "Range: bytes=0-16383" [public archive URL]
+
+Observed:
+HTTP/1.1 206 Partial Content
+Content-Length: 16384
+Content-Range: bytes 0-16383/98552
+Accept-Ranges: bytes
+
+Transferred fraction: 16384 / 98552 = 16.62%
+
+Conclusion:
+The combined PMTiles archive is publicly accessible through GitHub Pages.
+The server supports HTTP byte-range requests and returned only the requested
+16,384 bytes rather than the complete 98,552-byte archive.

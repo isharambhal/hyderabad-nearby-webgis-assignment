@@ -722,4 +722,17 @@ A second PMTiles archive was generated using Tippecanoe 2.80.0 through Docker. I
 - Output: `client/tiles/hyderabad_h3_services.pmtiles`
 - Archive size: 98,552 bytes
 
-The original `h3_access.pmtiles` archive was preserved. The combined archive is an additional static-delivery artifact; the existing live MapLibre client continues to use pg_tileserv and pg_featureserv for its operational layers. The combined archive's public HTTP Range behavior will be verified after deployment.
+The original `h3_access.pmtiles` archive was preserved. The combined archive is an additional static-delivery artifact; the existing live MapLibre client continues to use pg_tileserv and pg_featureserv for its operational layers. The combined archive was published through GitHub Pages and verified using curl.exe.
+
+- Public URL: `https://isharambhal.github.io/hyderabad-nearby-webgis-assignment/tiles/hyderabad_h3_services.pmtiles`
+- Full request: HTTP 200 OK
+- Full archive size: 98,552 bytes
+- Accept-Ranges: bytes
+- Partial request: HTTP 206 Partial Content
+- Requested range: bytes 0-16383
+- Content-Range: `bytes 0-16383/98552`
+- Bytes transferred: 16,384 (approximately 16.62% of the archive)
+
+This confirms that the combined archive is publicly accessible and supports partial byte-range delivery.
+
+**Additional evidence:** `evidence/phase5/Q12_combined_PMtiles_range.txt` records the public URL and the observed HTTP response headers.
