@@ -76,7 +76,7 @@ See `ANSWERS.md`, `evidence/`, `study/`, `sql/` and `k8s/` for assignment answer
 - DEM coverage and DEM WMS/WCS configuration are incomplete.
 - Building footprint area is a proxy, not measured population.
 - Some performance measurements were not separately captured.
-- The requested full-base single-stage versus slim/Alpine multi-stage image comparison was not fully reproduced.
+- The full-base single-stage versus Alpine multi-stage Docker image comparison is documented in Q10 and evidence/docker/Q10_full_vs_alpine_comparison.txt.
 - Public GitHub Pages does not provide the local backend services.
 
 ## Author
