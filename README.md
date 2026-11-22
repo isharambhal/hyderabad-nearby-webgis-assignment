@@ -114,3 +114,33 @@ M.Sc. Data Science and Spatial Analytics
 **Fix:** Re-saved the SQL file using UTF-8 without BOM.
 
 **Verification:** The SQL script executed successfully and reproduced all seven documented Q1 measurements.
+
+### Debugging Incident: PostgreSQL Authentication Failure (22 November 2026)
+
+**Problem:**
+The pg_tileserv and pg_featureserv containers repeatedly restarted because they could not authenticate with the PostGIS database. Their logs reported:
+
+`FATAL: password authentication failed for user "webgis"`
+
+**Investigation:**
+1. Checked Docker Compose logs and identified database authentication failures.
+2. Inspected PostgreSQL roles and confirmed that the existing database role was `webgis`.
+3. Inspected `pg_hba_file_rules` and found that local connections used `trust`, while network connections required `scram-sha-256`.
+4. Tested authentication over the Docker network and reproduced the failure.
+5. Identified that the password stored for the existing database role did not match the configured Docker password.
+
+**Solution:**
+1. Corrected the database username in the Compose connection strings to `webgis`.
+2. Used PostgreSQL `\password webgis` to synchronize the existing role password with the configured Docker password.
+3. Restarted only pg_tileserv and pg_featureserv.
+
+**Verification:**
+- pg_tileserv connected successfully to `hyderabad_webgis`.
+- pg_featureserv connected successfully to `hyderabad_webgis`.
+- pg_tileserv API returned HTTP 200 at `/index.json`.
+- pg_featureserv API returned HTTP 200 at `/collections`.
+- All four Docker Compose services were running.
+- All 14 existing public database tables were preserved.
+
+**Learning:**
+Changing PostgreSQL environment variables does not automatically update credentials inside an already-initialized persistent database volume. Local `trust` authentication can also mask password mismatches that appear when connecting over the Docker network.
