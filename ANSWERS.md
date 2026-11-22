@@ -622,6 +622,28 @@ The tests were performed at zoom levels 12, 14 and 16 where applicable, using Ch
 | 14 | 2 | 50.3 KB |
 | 16 | 8 | 58.1 KB |
 
+### Additional Repeat Test - Zoom 12
+
+A repeat WMS and MVT test was performed using the same browser viewport, map centre and zoom level, with Chrome DevTools cache disabled.
+
+| Metric | WMS PNG | MVT PBF |
+|---|---:|---:|
+| Map idle time | 0.94 s | 4.29 s |
+| Total requests | 6 | 5 |
+| Successful requests | 6 | 4 |
+| Cancelled requests | 0 | 1 |
+| Transferred | 59.7 KB | 261 KB |
+| Resources | 56.2 KB | 630 KB |
+
+All six WMS requests returned HTTP 200. For MVT, four requests returned HTTP 200 and one request was cancelled with zero bytes transferred.
+
+The map idle time is measured from adding the selected layer until MapLibre fires its idle event. It includes client-side loading and rendering and is not a server-only response-time measurement.
+
+In this particular repeat test, WMS reached the idle state sooner and transferred fewer bytes than MVT. This is an observed result for the tested viewport and should not be generalised to every map extent or zoom level. The earlier benchmark results above are retained as separate recorded runs.
+
+**Additional timing evidence:** `evidence/phase4/Q9_Z12_timing_observations.txt`
+**MVT timing screenshot:** `evidence/phase4/Q9_MVT_Z12_timing.png`
+
 ### Interpretation
 
 WFS delivered the building dataset in a single GeoJSON response, resulting in approximately 1 MB of transferred data.
