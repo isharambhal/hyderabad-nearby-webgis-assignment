@@ -1,0 +1,80 @@
+﻿Q10 - Full-Base Single-Stage vs Alpine Multi-Stage Comparison
+Date: 2026-11-22 22:10:35
+
+BUILD CONFIGURATION
+
+Full-base single-stage:
+Base image: nginx:latest
+Temporary Dockerfile:
+FROM nginx:latest
+COPY client/ /usr/share/nginx/html/
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+Alpine multi-stage:
+Build stage: alpine:3.21
+Runtime stage: nginx:alpine
+Source Dockerfile: repository Dockerfile
+
+EXACT IMAGE SIZES
+
+Full-base single-stage: 240961599 bytes
+Alpine multi-stage: 94041077 bytes
+Bytes saved: 146920522
+Percentage size reduction: 60.97%
+
+WEBSITE CONTENT VERIFICATION
+Full-base single-stage:
+5
+224	/usr/share/nginx/html
+Alpine multi-stage:
+5
+224	/usr/share/nginx/html
+
+FULL-BASE SINGLE-STAGE DOCKER HISTORY
+CMD ["nginx" "-g" "daemon off;"] | 0B
+EXPOSE [80/tcp] | 0B
+COPY client/ /usr/share/nginx/html/ # buildkΓÇª | 242kB
+CMD ["nginx" "-g" "daemon off;"] | 0B
+STOPSIGNAL SIGQUIT | 0B
+EXPOSE map[80/tcp:{}] | 0B
+ENTRYPOINT ["/docker-entrypoint.sh"] | 0B
+COPY 30-tune-worker-processes.sh /docker-entΓÇª | 16.4kB
+COPY 20-envsubst-on-templates.sh /docker-entΓÇª | 12.3kB
+COPY 15-local-resolvers.envsh /docker-entrypΓÇª | 12.3kB
+COPY 10-listen-on-ipv6-by-default.sh /dockerΓÇª | 12.3kB
+COPY docker-entrypoint.sh / # buildkit | 8.19kB
+RUN /bin/sh -c set -x     && groupadd --systΓÇª | 88.8MB
+ENV DYNPKG_RELEASE=1~trixie | 0B
+ENV PKG_RELEASE=1~trixie | 0B
+ENV ACME_VERSION=0.4.1 | 0B
+ENV NJS_RELEASE=1~trixie | 0B
+ENV NJS_VERSION=1.0.2 | 0B
+ENV NGINX_VERSION=1.31.8 | 0B
+LABEL maintainer=NGINX Docker Maintainers <dΓÇª | 0B
+# debian.sh --arch 'amd64' out/ 'trixie' '@1ΓÇª | 87.7MB
+
+ALPINE MULTI-STAGE DOCKER HISTORY
+CMD ["nginx" "-g" "daemon off;"] | 0B
+EXPOSE [80/tcp] | 0B
+COPY /site/ /usr/share/nginx/html/ # buildkit | 242kB
+RUN /bin/sh -c set -x     && apkArch="$(cat ΓÇª | 52.4MB
+ENV ACME_VERSION=0.4.2 | 0B
+ENV NJS_RELEASE=1 | 0B
+ENV NJS_VERSION=1.0.2 | 0B
+CMD ["nginx" "-g" "daemon off;"] | 0B
+STOPSIGNAL SIGQUIT | 0B
+EXPOSE map[80/tcp:{}] | 0B
+ENTRYPOINT ["/docker-entrypoint.sh"] | 0B
+COPY 30-tune-worker-processes.sh /docker-entΓÇª | 16.4kB
+COPY 20-envsubst-on-templates.sh /docker-entΓÇª | 12.3kB
+COPY 15-local-resolvers.envsh /docker-entrypΓÇª | 12.3kB
+COPY 10-listen-on-ipv6-by-default.sh /dockerΓÇª | 12.3kB
+COPY docker-entrypoint.sh / # buildkit | 8.19kB
+RUN /bin/sh -c set -x     && addgroup -g 101ΓÇª | 5.75MB
+ENV DYNPKG_RELEASE=1 | 0B
+ENV PKG_RELEASE=1 | 0B
+ENV NGINX_VERSION=1.31.9 | 0B
+LABEL maintainer=NGINX Docker Maintainers <dΓÇª | 0B
+CMD ["/bin/sh"] | 0B
+ADD alpine-minirootfs-3.24.4-x86_64.tar.gz /ΓÇª | 9.09MB

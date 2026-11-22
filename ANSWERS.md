@@ -678,21 +678,57 @@ Screenshots are stored in `evidence/phase4/`:
 The measurements were collected using Chrome Developer Tools Network panel. The WFS GeoJSON request transferred approximately 1,025 KB and took 1.52 seconds. The WMS and MVT request counts and transferred sizes were recorded at zoom levels 12, 14 and 16. These measurements depend on the browser viewport, map extent, cache state and network conditions. The recorded WMS totals should be checked against the WMS-filtered screenshots to ensure unrelated page requests are excluded. Response times for individual WMS and MVT tests were not separately recorded.
 ## Q10. Single-Stage and Multi-Stage Docker Image Comparison
 
-Both Docker images were built successfully for the static Nginx WebGIS client.
+Two builds of the same static WebGIS client were created to compare a full-base single-stage image with a slim Alpine multi-stage image. Both images contain the same five website files.
 
-| Measurement | Multi-stage | Single-stage |
+### Final comparison
+
+| Measurement | Full-base single-stage | Alpine multi-stage |
 |---|---:|---:|
-| Docker image size (bytes) | 93,671,942 | 93,676,477 |
-| Docker image size (decimal MB) | 93.671942 | 93.676477 |
+| Base image | nginx:latest | alpine:3.21 build, nginx:alpine runtime |
+| Docker image size | 240,961,599 bytes | 94,041,077 bytes |
+| Decimal image size | 240.96 MB | 94.04 MB |
+| Website files | 5 | 5 |
+| Website directory size | 224 KiB | 224 KiB |
 
-The multi-stage image was smaller by **4,535 bytes**, approximately **0.0048%**.
+The Alpine multi-stage image was smaller by **146,920,522 bytes (approximately 146.92 MB)**, representing a **60.97% reduction** compared with the full-base single-stage image.
 
-Docker history showed that both images used the same Nginx base image and contained approximately 53.2 KB of website content.
+### Dockerfile configurations
 
-The size difference was negligible because this application is a small static website and the final images share the same Nginx runtime. The multi-stage build keeps its separate build stage out of the final image, but it does not produce a substantial size reduction for this particular application.
+The temporary full-base single-stage build used:
+
+    FROM nginx:latest
+    COPY client/ /usr/share/nginx/html/
+    EXPOSE 80
+    CMD ["nginx", "-g", "daemon off;"]
+
+The Alpine multi-stage build used the repository Dockerfile:
+- Build stage: alpine:3.21
+- Runtime stage: nginx:alpine
+- Website files were copied from the build stage into the final Nginx runtime image.
+
+The repository Dockerfile and Docker Compose deployment were not modified for this comparison.
+
+### Docker history observations
+
+The full-base image history showed larger Debian/Nginx runtime layers, including approximately 88.8 MB and 87.7 MB layers. The website COPY layer was approximately 242 KB.
+
+The Alpine multi-stage image history showed an approximately 52.4 MB Nginx/runtime package layer, a 5.75 MB package layer and a 9.09 MB Alpine base filesystem layer. The website COPY layer was approximately 242 KB. The separate preparation stage was not included in the final image.
+
+### Interpretation
+
+Both images contain the same five website files, with a website directory size of approximately 224 KiB. The principal difference is the size of the base operating system and Nginx runtime packaging. The Alpine-based final image therefore has a substantially smaller footprint.
+
+The observed 60.97% reduction compares the complete full-base single-stage design against the Alpine multi-stage design. Since both the base image and build strategy differ, the entire reduction cannot be attributed to multi-stage construction alone.
+
+### Preliminary same-base experiment
+
+An earlier experiment compared single-stage and multi-stage images using Alpine-based Nginx runtimes. Their recorded sizes were 93,676,477 bytes and 93,671,942 bytes respectively, a difference of 4,535 bytes (approximately 0.0048%). This preliminary comparison is retained for completeness but did not satisfy the assignment's requested full-base versus slim/Alpine multi-stage comparison.
+
+### Evidence
+
+- evidence/docker/Q10_full_vs_alpine_comparison.txt - exact image sizes, website content checks and Docker history output.
 
 
-**Comparison limitation:** Both tested images used `nginx:alpine` as the base image. Therefore, this experiment compares single-stage and multi-stage builds using the same Alpine base, rather than the assignment's requested full-base single-stage versus slim/Alpine multi-stage comparison.
 ## Q11. Kubernetes Self-Healing and Persistent Storage
 
 A two-node Kubernetes cluster was created through Docker Desktop Kubernetes. PostGIS 16 with PostGIS 3.7 was deployed using a StatefulSet in the `webgis-k8s` namespace. The cluster used Docker Desktop Kubernetes rather than kind or minikube.
