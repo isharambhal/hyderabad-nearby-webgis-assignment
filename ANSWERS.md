@@ -432,6 +432,26 @@ Both formats returned the same 67 named healthcare services. GeoJSON was approxi
 - GML 3.2: `evidence/phase2/named_services_gml32.xml`
 - WFS screenshots and request output: `evidence/phase2/`
 
+## Supplementary Phase 2 - Rule-Based SLD Styling Verification
+
+GeoServer was configured with the `healthcare_services` style for the published layer `hyderabad:phase2_services`.
+
+The WMS GetCapabilities response returned HTTP 200 and listed the `healthcare_services` style with the title **Named and Unnamed Healthcare Services**.
+
+A WMS GetMap request was then executed using:
+- Workspace: `hyderabad`
+- Layer: `hyderabad:phase2_services`
+- Style: `healthcare_services`
+- WMS version: 1.1.1
+- Output format: PNG
+- Image dimensions: 1000 ? 800 pixels
+
+The request returned HTTP 200 with content type `image/png`. The resulting valid PNG file was 24,820 bytes.
+
+The rendered image visually shows blue markers for named healthcare services and orange markers for unnamed healthcare services, demonstrating the rule-based styling.
+
+**Evidence:** `evidence/phase2/Q5_healthcare_services_SLD_GetMap.png`
+
 ## Q6 – Straight-Line Distance vs Walking Network
 
 ### 6.1 Objective
