@@ -1,4 +1,4 @@
-.venv/
+﻿.venv/
 __pycache__/
 .env
 *.pyc
@@ -31,3 +31,4 @@ __pycache__/
 
 # Temporary vector tile test
 h3_test.pbf
+k8s/postgres-secret.env
